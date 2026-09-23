@@ -104,6 +104,19 @@ The successful baseline validates the model-free inherited unit/regression lane 
 
 GitHub Actions run: `35814849823` (`Sandbox-safe tests`).
 
+## Compile and package-build baseline
+
+Recorded on commit `778371c447de20f4486a6bd5f35e022076f2f267` in GitHub Actions run `35814935494`:
+
+- `uv run python -m compileall -q src tests` — **passed**;
+- `uv build` — **passed**;
+- source distribution produced: `dist/llm2jev-0.1.0.tar.gz`;
+- wheel produced: `dist/llm2jev-0.1.0-py3-none-any.whl`.
+
+The unit/regression suite also remained green in the same job: 134 discovered, 124 executed/passed, 10 optional-Pillow skips, 0 failures/errors.
+
+Both compile and package-build checks are now permanent steps in `.github/workflows/unit-tests.yml`.
+
 ## External baseline coverage to add
 
 Before making claims about real-model behavior, provide reproducible external smoke/integration commands for at least:
