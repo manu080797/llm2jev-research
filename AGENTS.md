@@ -117,6 +117,8 @@ For scorer refactors, retain regression tests proving the existing binary path i
 
 Before submitting changes from the sandbox, run all applicable sandbox-safe tests plus `uv run python -m compileall -q src tests` and `uv build`. Document any external tests still required.
 
+The model-free baseline suite is also enforced by `.github/workflows/unit-tests.yml`; keep that workflow aligned with the documented sandbox-safe command in `docs/testing.md`.
+
 ## Research and Benchmark Discipline
 
 Keep experimental knobs explicit and configurable. Do not tune evaluator choices on held-out test data.

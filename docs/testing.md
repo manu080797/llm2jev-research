@@ -84,6 +84,8 @@ uv run python -m compileall -q src tests
 uv build
 ```
 
+The model-free CI workflow `.github/workflows/unit-tests.yml` runs this command on pushes to `main`, pull requests, and manual dispatches. It installs only the project's base dependencies; tests guarded by optional Pillow/Transformers/torch dependencies may therefore skip. This is intentional for the baseline sandbox-safe lane and skips must be reported rather than silently treated as executed coverage.
+
 The next task in issue #1 is to run and document the sandbox-safe suite. Optional multimodal tests may be skipped when their optional local dependencies are not installed; skips must be reported rather than silently treated as executed coverage.
 
 ## External baseline coverage to add
