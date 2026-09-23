@@ -5450,7 +5450,7 @@
       "node_kind": "heading",
       "norm_label": "commit & pull request guidelines",
       "source_file": "AGENTS.md",
-      "source_location": "L130"
+      "source_location": "L132"
     },
     {
       "id": "agents_current_research_sequence",
@@ -5462,7 +5462,7 @@
       "node_kind": "heading",
       "norm_label": "current research sequence",
       "source_file": "AGENTS.md",
-      "source_location": "L138"
+      "source_location": "L140"
     },
     {
       "id": "agents_graphify_knowledge_graph",
@@ -5534,7 +5534,7 @@
       "node_kind": "heading",
       "norm_label": "research and benchmark discipline",
       "source_file": "AGENTS.md",
-      "source_location": "L120"
+      "source_location": "L122"
     },
     {
       "id": "agents_research_fork_context",
@@ -5594,7 +5594,7 @@
       "node_kind": "heading",
       "norm_label": "external baseline coverage to add",
       "source_file": "docs/testing.md",
-      "source_location": "L89"
+      "source_location": "L91"
     },
     {
       "id": "docs_testing_external_real_model_integration",
@@ -15059,7 +15059,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
-      "source_location": "L120",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -15070,7 +15070,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
-      "source_location": "L130",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -15081,7 +15081,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
-      "source_location": "L138",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -16203,7 +16203,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/testing.md",
-      "source_location": "L89",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -23715,5 +23715,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "888f7bc19b01e8dab9ee7b6912bf5ef7be139058"
+  "built_at_commit": "02bea14935f3a7d152556e89aaa35476b3a1faf0"
 }
