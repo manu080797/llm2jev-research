@@ -12,6 +12,14 @@ Before making architectural or research changes, read:
 
 Do not duplicate task completion state in `README.md` or `docs/research-design.md`; keep checkboxes and operational status in issue #1. Do not silently replace accepted design decisions. If evidence requires a change, add a new decision entry to `docs/research-design.md` and explicitly supersede the prior decision. Link meaningful implementation work to issue #1 or a more specific issue created from it.
 
+## Maintaining AGENTS.md
+
+Keep this file current. When a repository change makes any instruction in `AGENTS.md` inaccurate or incomplete—including repository structure, architectural boundaries, canonical documents, development commands, supported runtimes, testing requirements, or required workflows—update `AGENTS.md` in the same commit or pull request.
+
+Do not use `AGENTS.md` for transient state such as task completion, active branches, benchmark results, temporary experiments, or current issue status. Put those in their designated trackers or documentation.
+
+Before completing a substantive repository change, check whether it invalidates any statement in `AGENTS.md`, `README.md`, or `docs/research-design.md`, and update the appropriate authoritative document in the same change.
+
 ## Project Structure & Module Organization
 
 This repository uses a Python `src` layout. Keep stable public imports in `src/llm2jev/__init__.py`. Protocol and domain objects live in `src/llm2jev/models/`; inference, prompt rendering, scoring, normalization, backend integration, and response assembly live under `src/llm2jev/inference/`. Shared internal JSON and probability helpers belong in `src/llm2jev/utils/`, not the public package API. Tests mirror these responsibilities under `tests/` using `test_<module>.py` names.
