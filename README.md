@@ -4,20 +4,35 @@
 
 <div align="center">
 
-# 🧠 LLM2Jev: Turn LLMs into Jev-Style Decision Models
+# 🧠 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference
 <br/>
 
 [![Python](https://img.shields.io/badge/python-3.12%2B-blue?style=flat-square)](pyproject.toml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green?style=flat-square)](LICENSE)
 [![Jev API](https://img.shields.io/badge/API-%2Fv1%2Fsystemone%20compatible-orange?style=flat-square)](docs/usage.md)
 
-[简体中文](README_zh.md)
-
-**Turn local language models into Jev-style structured decision models. Get results from text and images with prefill alone—no token-by-token decoding required.**
+**Research fork of LLM2Jev for zero-training, model-agnostic structured decision inference across scoring strategies and local runtimes, with CPU/GGUF execution as a first-class target.**
 
 </div>
 
-> LLM2Jev is an independent open-source project. It is not affiliated with or endorsed by Jev or TypeSafe.
+> This repository is a research fork of [Yinsongxu/LLM2Jev](https://github.com/Yinsongxu/LLM2Jev). LLM2Jev is an independent open-source project and is not affiliated with or endorsed by Jev or TypeSafe.
+
+## 🔬 Research Fork
+
+The upstream independent yes/no candidate scorer remains the compatibility baseline. This fork is extending the architecture so **scoring strategy** and **model backend** are independent and can be compared under the same Jev-style API.
+
+Planned research includes:
+
+- a generic `ScoringStrategy` layer retaining the current binary yes/no method while adding label-token and full candidate-continuation likelihood experiments;
+- a generic `ModelBackend` boundary spanning the existing SGLang/Transformers implementations and a planned llama.cpp/GGUF backend;
+- CPU-oriented evaluation, including BitNet without making the semantic API BitNet-specific;
+- shared-prefix/KV reuse across scoring methods;
+- reproducible evaluation of decision quality, robustness, uncertainty diagnostics, latency, throughput, memory, and CPU efficiency;
+- later masked/diffusion scoring experiments behind an appropriate backend primitive.
+
+No fine-tuning or project-specific training data is required by the baseline design. Competing scorers and models are treated as experiments until comparative evidence supports a default.
+
+See **[Research design and decision log](docs/research-design.md)** for the architecture, accepted decisions, methodology, and open questions. Implementation progress is tracked in **[issue #1](https://github.com/manu080797/llm2jev-research/issues/1)**.
 
 
 ## 📰 News
@@ -46,8 +61,8 @@ Learn how it works: [From Jev Request to LLM Request](docs/request-to-model.md) 
 On Linux with a supported NVIDIA GPU, run a local model through SGLang:
 
 ```bash
-git clone https://github.com/Yinsongxu/LLM2Jev.git
-cd LLM2Jev
+git clone https://github.com/manu080797/llm2jev-research.git
+cd llm2jev-research
 uv sync --extra sglang
 source .venv/bin/activate
 python examples/sglang_inference.py --model-path /path/to/model
@@ -94,12 +109,19 @@ See the [Usage guide](docs/usage.md) for complete examples:
 
 See [Performance benchmarks](docs/shared-prefix-benchmarks.md) for the Qwen3-1.7B / RTX 5090 measurements, test conditions, and comparison of `staged` and `all` across cold and warm caches. Gains depend on input length, candidate count, and cache state.
 
-## 🗺️ Roadmap
+## 🗺️ Research Roadmap
 
-- [ ] More benchmarks across model sizes, datasets, and workloads, covering decision quality, latency, and throughput.
-- [x] An interactive web demo for submitting questions and inspecting probabilities.
-- [x] Initial local-image support for Transformers and SGLang.
-- [ ] More multimodal tasks and demos.
+The detailed, actively maintained roadmap is in [issue #1](https://github.com/manu080797/llm2jev-research/issues/1), with architectural decisions in [docs/research-design.md](docs/research-design.md).
+
+Current phases are:
+
+- [ ] Establish and record the existing LLM2Jev baseline.
+- [ ] Separate scoring strategy from inference backend while preserving binary-scoring behavior.
+- [ ] Add a generic llama.cpp/GGUF CPU backend.
+- [ ] Implement and evaluate full candidate continuation likelihood.
+- [ ] Integrate and benchmark BitNet through the generic backend interface.
+- [ ] Build reproducible quality, robustness, calibration-diagnostic, and performance evaluation.
+- [ ] Evaluate label-token and masked/diffusion scoring as additional experiments.
 
 ## 🧪 Tests
 
