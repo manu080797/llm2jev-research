@@ -100,6 +100,8 @@ Prefer small explicit interfaces such as `ScoringStrategy` and `ModelBackend` ov
 
 ## Testing Guidelines
 
+See `docs/testing.md` for the current inherited-suite inventory and the sandbox-safe versus external-integration classification. Keep that inventory current when test files or their runtime requirements materially change.
+
 Development may occur in the OpenAI cloud sandbox. Do **not** assume that environment can download or run real LLM weights, access a GPU, run SGLang/BitNet specialized hardware paths, or produce meaningful model-performance benchmarks.
 
 Split validation explicitly:
