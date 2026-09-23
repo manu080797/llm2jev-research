@@ -29,3 +29,9 @@ jobs:
 
       - name: Run sandbox-safe unit/regression suite
         run: uv run python -m unittest discover -s tests -v
+
+      - name: Compile source and tests
+        run: uv run python -m compileall -q src tests
+
+      - name: Build source and wheel packages
+        run: uv build
