@@ -115,9 +115,28 @@ The sandbox limitation must never be hidden by marking a real-model test as pass
 
 Ordinary hosted CI should remain model-free unless a deliberately provisioned integration runner is added later.
 
+### D009 — Optimize for research velocity, not production hardening
+**Status:** accepted
+
+This is an exploratory research fork. The primary objective is to obtain useful comparative evidence quickly, not to reach production-grade test coverage, interface stability, deployment hardening, or exhaustive validation before trying an idea.
+
+Consequences:
+
+- implementation phases are a direction of travel, not blocking stage gates;
+- small spikes and temporary experimental code are acceptable when they answer a research question faster;
+- prefer the simplest implementation that can produce trustworthy evidence, then refactor abstractions that survive comparison;
+- add tests where they protect scoring mathematics, important transformations, or regressions likely to confuse experiments; do not add tests merely for coverage completeness;
+- the existing model-free CI is a lightweight guardrail, not a definition of research completeness;
+- real-model commands, environment metadata, and benchmark artifacts only need to become reproducible when a result is being compared, reported, or used to make a durable design/default decision;
+- exploratory real-model runs may be manual and minimally scripted;
+- API compatibility may be temporarily broken on research branches when that substantially speeds an experiment, provided durable/public behavior is reconciled before declaring an approach adopted;
+- avoid building generalized infrastructure before at least one concrete experiment demonstrates that it is needed.
+
+D009 supersedes the process-heavy interpretation of D008. D008 still defines the difference between model-free and real-model validation, but it does not require both layers for every implementation change.
+
 ## Metrics
 
-At minimum record:
+When making a comparative claim or choosing a preferred approach, record the relevant subset of:
 
 - task accuracy;
 - NLL where meaningful;
@@ -142,44 +161,43 @@ Operational task state for every phase belongs in [issue #1](https://github.com/
 
 ### Phase 0 — Repository baseline
 
-Inventory the inherited tests and classify them as sandbox-safe or real-model integration tests. Run and document all sandbox-safe tests, compile/build checks, and deterministic fake-backend coverage for the existing binary path. Document reproducible commands and environment requirements for the inherited Transformers/SGLang real-model tests; execute and record those baselines only on a suitable external/local environment. Establish benchmark metadata conventions before architectural refactoring.
+Establish a lightweight baseline: inventory the inherited tests, run the model-free suite, compile the package, and confirm that the existing binary path has fake-backend coverage. This is enough to begin research. Real-model baselines, detailed environment schemas, and additional integration infrastructure are deferred until they are needed for an actual comparison.
 
 ### Phase 1 — Scoring abstraction
 
-Define `ScoringStrategy`, move the existing yes/no behavior behind `BinaryScorer` without observable behavior change, preserve API compatibility, and add deterministic scorer-level regression tests using fake backends. Real-model regression remains an external integration check, not a prerequisite that can be falsely satisfied inside the sandbox.
+Introduce the thinnest useful `ScoringStrategy` boundary and place the current yes/no path behind `BinaryScorer`. Preserve behavior where convenient, but do not over-design the interface before continuation and llama.cpp experiments exercise it. Add only targeted tests needed to protect scorer math and the existing baseline.
 
 ### Phase 2 — llama.cpp backend
 
-Define the minimal generic `ModelBackend` contract and implement llama.cpp/GGUF support for CPU execution. Validate request construction, parsing, error handling, scorer/backend contracts, and deterministic mocked responses in the sandbox. Commit a reproducible external integration command that runs at least one conventional GGUF model on CPU. KV reuse, numerical behavior, and performance claims require that external real-runtime test; measure them rather than assuming benefit.
+Get a conventional GGUF model scoring candidates through llama.cpp on CPU by the simplest maintainable route. Let that concrete implementation inform the eventual `ModelBackend` contract rather than designing the full abstraction up front. Add lightweight contract tests for fragile parsing/scoring logic; investigate KV reuse once basic scoring works.
 
 ### Phase 3 — Continuation scorer
 
-Implement full conditional continuation log-likelihood, efficient candidate batching/branching where supported, explicit length normalization, optional null-context/prior correction, separate raw and normalized scores, and unequal-length candidate tests. The mathematics and backend contract must be fully unit-testable with deterministic logits/token sequences in the sandbox; real-model agreement and throughput are external integration checks.
+Implement full conditional continuation log-likelihood early enough to compare it with the binary baseline. Start with a correct simple version; add batching/KV branching, length normalization variants, and null-context correction only as experiments require them. Use small deterministic tests for the scoring equation and unequal-length candidates.
 
 ### Phase 4 — BitNet
 
-Implement the generic integration and unit-test its backend contract in the sandbox. Establish a known-good BitNet/bitnet.cpp model/runtime baseline, numerical correctness, binary-versus-continuation comparison, and CPU performance only in a suitable external environment with the actual BitNet runtime and weights. Do not introduce BitNet-specific semantics.
+Try BitNet through the emerging generic boundary as soon as llama.cpp/continuation experiments make that boundary concrete. Prioritize getting real CPU measurements over building exhaustive mocks. Keep BitNet-specific details below the semantic scoring layer and compare only the metrics needed to decide whether the runtime is promising.
 
-### Phase 5 — Evaluation harness
+### Phase 5 — Comparative evaluation
 
-Build reproducible benchmark configuration and machine-readable result schemas. Unit-test dataset adapters, perturbation generation, metric calculations, aggregation, and result serialization from fixtures in the sandbox. Actual model quality, uncertainty, latency, throughput, memory, and energy results are produced only by external real-model runs. Interoperate with lm-evaluation-harness where useful.
+Once two or more approaches are worth comparing, add the minimum evaluation plumbing needed for a fair comparison. Reuse lm-evaluation-harness or small scripts before building a custom harness. Increase reproducibility, perturbation testing, uncertainty metrics, and machine-readable result capture only for experiments that influence durable design decisions.
 
 ### Phase 6 — Experimental backends
 
-Implement and unit-test label-token and `MaskedBackend` semantic contracts with deterministic fixtures in the sandbox. Run small masked/diffusion models and compare them against autoregressive baselines only in an external environment where the required runtime/weights are available and CPU feasibility can be measured credibly.
+Spike label-token and masked/diffusion approaches with minimal plumbing. Promote an experiment into the common architecture only if results justify continued work; otherwise keep the prototype disposable.
 
 ## Change protocol
 
-For meaningful research changes:
+Keep process proportional to the research value of the change:
 
-1. Link the change to issue #1 or a more specific issue derived from it.
-2. Update this document when architecture, assumptions, interfaces, benchmark methodology, or accepted decisions change.
-3. Keep operational completion/status only in GitHub issues; do not add mirrored task checkboxes here or in the README.
-4. Add a new decision ID instead of silently rewriting an old rationale when a decision is reversed.
-5. Record supersession explicitly (for example, “D004 superseded by D012”).
-6. Keep experimental defaults configurable until evidence supports making them normative.
-7. Commit benchmark configuration/results needed to reproduce conclusions; do not rely only on prose claims.
-8. For every substantive change, record which sandbox-safe tests were actually run and list any required real-model integration tests as external/not-run until they are executed.
+1. Use issue #1 as the task tracker, but do not create extra process artifacts for small experiments.
+2. Update this document when a **durable** architecture, methodology, or default decision changes; temporary implementation details do not need decision-log entries.
+3. Keep operational completion/status only in GitHub issues.
+4. When reversing an accepted durable decision, add a new decision ID and explicitly supersede the old one.
+5. Keep experimental knobs configurable while they are genuinely under comparison; remove dead knobs after experiments settle.
+6. Preserve enough commands/results to reproduce evidence that is used to choose an approach. Disposable exploratory runs do not need production-grade provenance.
+7. Run the lightweight CI guardrail for changes headed to `main`; add targeted tests when a failure would invalidate or confuse an experiment.
 
 ## Decision template
 

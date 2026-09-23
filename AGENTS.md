@@ -100,42 +100,47 @@ Prefer small explicit interfaces such as `ScoringStrategy` and `ModelBackend` ov
 
 ## Testing Guidelines
 
-See `docs/testing.md` for the current inherited-suite inventory and the sandbox-safe versus external-integration classification. Keep that inventory current when test files or their runtime requirements materially change.
+This is a research repository. Use testing to keep experiments interpretable, not to pursue production-grade coverage.
 
-Development may occur in the OpenAI cloud sandbox. Do **not** assume that environment can download or run real LLM weights, access a GPU, run SGLang/BitNet specialized hardware paths, or produce meaningful model-performance benchmarks.
+`docs/testing.md` records the inherited model-free baseline. The CI workflow in `.github/workflows/unit-tests.yml` is a lightweight regression guardrail for `main`.
 
-Split validation explicitly:
+Guidelines:
 
-- **Sandbox-safe tests are mandatory:** `unittest` tests, deterministic fake/model-stub backends, scorer mathematics, prompt/request compilation, serialization, normalization, API contracts, mocked runtime/HTTP behavior, `compileall`, and package builds. These tests must not require network access, model downloads, GPUs, or API keys.
-- **Real-model integration tests are external:** actual Transformers/SGLang inference, llama.cpp/GGUF model execution, BitNet/bitnet.cpp numerical checks, real KV-cache behavior, cross-runtime comparisons, and all model quality/performance benchmarks. Run these on a provisioned local/external machine or future self-hosted runner.
+- run the existing model-free suite for changes intended for `main`;
+- add small deterministic tests for scoring equations, normalization, token/candidate alignment, serialization that feeds experiments, and regressions that would make results misleading;
+- fake backends are useful when they make semantic logic easy to test, but do not build elaborate mocks solely to satisfy coverage;
+- do not require a unit test for every validation branch or temporary research knob;
+- real-model validation is performed when the experiment actually depends on model/runtime behavior; it does not block unrelated code work;
+- do not claim a real-model result unless that model/runtime was actually run;
+- exploratory branches may temporarily break compatibility or omit tests if that materially accelerates learning; clean up the winning path before treating it as adopted.
 
-Never report an external integration test as passed when it was not run. If a code change requires such validation, commit a reproducible command/configuration for it and explicitly record it as `not run in OpenAI sandbox` until results exist.
+The standard lightweight checks are:
 
-Use `unittest.TestCase` and descriptive `test_<behavior>` methods. Every validation rule needs both a valid serialization case and an invalid-input case. Model-facing work should first use deterministic fake backends so semantic and orchestration logic remains testable without weights.
+```bash
+uv run python -m unittest discover -s tests -v
+uv run python -m compileall -q src tests
+uv build
+```
 
-For scorer refactors, retain regression tests proving the existing binary path is behaviorally unchanged. For continuation scoring, include unequal-token-length candidates and verify raw conditional scores independently of normalization. Backend-specific optimizations need real-runtime correctness tests before performance claims.
-
-Before submitting changes from the sandbox, run all applicable sandbox-safe tests plus `uv run python -m compileall -q src tests` and `uv build`. Document any external tests still required.
-
-The model-free baseline suite is also enforced by `.github/workflows/unit-tests.yml`; keep that workflow aligned with the documented sandbox-safe command in `docs/testing.md`.
+Use additional external integration or benchmark scripts only when needed to answer the current research question.
 
 ## Research and Benchmark Discipline
 
-Keep experimental knobs explicit and configurable. Do not tune evaluator choices on held-out test data.
+Optimize first for fast, informative comparisons. Do not build a general benchmark framework before a concrete comparison needs it.
 
-When reporting comparative results, record enough environment information to reproduce them, including model/revision, quantization, backend/runtime revision, hardware, thread settings, scorer configuration, dataset/split, and prompt/template configuration where relevant.
+For quick exploratory runs, record only enough context to understand the result. When an experiment is used to choose a preferred scorer/model/runtime or support a durable claim, then capture the relevant model/revision, quantization, backend/runtime revision, hardware, thread settings, scorer configuration, dataset/split, prompt/template, and result artifacts.
 
-Track accuracy and robustness alongside performance. The current research plan includes accuracy, NLL/Brier/ECE where meaningful, order and prompt perturbation stability, selective prediction, latency, throughput, RAM/model footprint, and CPU efficiency.
+Use the relevant metrics for the hypothesis being tested rather than computing the full metric catalog every time. Accuracy/robustness and CPU latency/throughput are likely early discriminators; calibration, perturbation suites, RAM/energy, and selective prediction can be added when they materially affect a decision.
 
-For independent binary scoring, candidate scores are order-independent by construction, but deterministic tie-breaking may still depend on the original `criteria` order. Tests and claims about order invariance must preserve that distinction.
+Do not tune final evaluator choices on held-out test data. For independent binary scoring, remember that candidate scores are order-independent by construction while deterministic tie-breaking may still depend on original criteria order.
 
 ## Commit & Pull Request Guidelines
 
-Use concise imperative commit subjects, for example `Add continuation scoring strategy`. Keep commits focused. Pull requests should explain the behavior change, list verification commands, link the relevant issue, and identify protocol, scoring, probability, or performance assumptions.
+Use concise imperative commit subjects, for example `Add continuation scoring strategy`. Keep commits focused. Pull requests for durable changes should explain the research question/behavior change and note meaningful verification. Small exploratory commits do not need production-style PR ceremony.
 
 For architecture, methodology, default-strategy, or benchmark-policy changes, update `docs/research-design.md` in the same PR and add/supersede a decision ID as appropriate.
 
-Include sample JSON for wire-format changes. Include benchmark artifacts or machine-readable results for performance/quality claims when practical.
+Include reproducible benchmark artifacts when a performance/quality result is being used to make a durable design decision.
 
 ## Current Research Sequence
 
@@ -149,4 +154,4 @@ Issue #1 owns task completion status. The non-status phase sequence is:
 6. build reproducible comparative evaluation;
 7. evaluate label-token and masked/diffusion approaches as additional experiments.
 
-Do not skip baseline measurement or correctness validation merely to reach later experimental phases sooner.
+The phase order is advisory. Spike later ideas early when doing so can invalidate an assumption or avoid unnecessary abstraction work.

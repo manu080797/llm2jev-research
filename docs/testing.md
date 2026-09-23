@@ -86,7 +86,7 @@ uv build
 
 The model-free CI workflow `.github/workflows/unit-tests.yml` runs this command on pushes to `main`, pull requests, and manual dispatches. It installs only the project's base dependencies; tests guarded by optional Pillow/Transformers/torch dependencies may therefore skip. This is intentional for the baseline sandbox-safe lane and skips must be reported rather than silently treated as executed coverage.
 
-The next task in issue #1 is to run and document the sandbox-safe suite. Optional multimodal tests may be skipped when their optional local dependencies are not installed; skips must be reported rather than silently treated as executed coverage.
+Optional multimodal tests may be skipped when their optional local dependencies are not installed; skips must be reported rather than silently treated as executed coverage.
 
 ## Baseline sandbox-safe run
 
@@ -117,9 +117,9 @@ The unit/regression suite also remained green in the same job: 134 discovered, 1
 
 Both compile and package-build checks are now permanent steps in `.github/workflows/unit-tests.yml`.
 
-## External baseline coverage to add
+## External experiments when needed
 
-Before making claims about real-model behavior, provide reproducible external smoke/integration commands for at least:
+The inherited model-free suite is sufficient to begin research. Add real-model smoke tests or scripts when an experiment depends on them. Useful targets include:
 
 1. Transformers text-only binary scoring with an actual local model;
 2. SGLang text-only binary scoring using the same or equivalent model;
@@ -127,4 +127,4 @@ Before making claims about real-model behavior, provide reproducible external sm
 4. staged versus all-submission behavior on a live SGLang runtime, including cache/performance metadata;
 5. multimodal scoring with a real supported VLM, if multimodal behavior remains in scope.
 
-Future llama.cpp/GGUF and BitNet work must add their own external integration commands as those backends are introduced.
+llama.cpp/GGUF and BitNet experiments should start with the simplest runnable commands. Promote them into stable/reproducible benchmark scripts only when their results are used for comparison or a durable design decision.
