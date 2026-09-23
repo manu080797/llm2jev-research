@@ -1,44 +1,47 @@
 # Graph Report - llm2jev-research  (2026-09-23)
 
 ## Corpus Check
-- 65 files · ~203,824 words
+- 65 files · ~203,893 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 6 file(s) not represented in the graph (top: (none) 4, .css 1, .lock 1)
 
 ## Summary
-- 616 nodes · 1412 edges · 25 communities (21 shown, 4 thin omitted)
+- 617 nodes · 1413 edges · 28 communities (24 shown, 4 thin omitted)
 - Extraction: 81% EXTRACTED · 19% INFERRED · 0% AMBIGUOUS · INFERRED: 272 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `778371c4`
+- Built from commit: `786f2807`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - JevRequest
 - sglang_server.py
-- validate_probability
+- Usage
 - SGLangBackend
-- score_result
+- test_sglang_server.py
 - BinaryQuestion
 - staged_batches
 - fetch_panda.py
 - mujoco_demo.py
 - app.js
-- _parse_request
-- llm2jev/__init__.py
+- ServerArgumentTests
+- JevResponse
 - ImageBackendTests
-- FakeTokenizer
-- normalize_l1
+- llm2jev/__init__.py
+- score_result
 - utils/__init__.py
 - llm2jev
 - Research architecture and decision log
+- .__init__
 - Repository Guidelines
 - 🧠 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference
+- ScoreBatchTests
 - README.md
 - From Jev Request to LLM Request
 - LLM2Jev Pick & Place Arm Demo
+- Shared prefixes: reuse context across multiple decisions
 - Using multimodal data
 - Usage guide
 
@@ -59,41 +62,41 @@
   docs/shared-prefix-benchmarks.md → src/llm2jev/backend/sglang/backend.py
 - `SGLang Python API` --references--> `JevRequest`  [INFERRED]
   docs/usage.md → src/llm2jev/core/request.py
-- `Baseline sandbox-safe run` --references--> `ImageBackendTests`  [INFERRED]
-  docs/testing.md → tests/test_multimodal.py
 - `Shared prefixes: reuse context across multiple decisions` --references--> `SGLangBackend`  [INFERRED]
   docs/shared-prefix-cache.md → src/llm2jev/backend/sglang/backend.py
 - `Shared prefixes: reuse context across multiple decisions` --references--> `TransformersBackend`  [INFERRED]
   docs/shared-prefix-cache.md → src/llm2jev/backend/transformers/backend.py
+- `Baseline sandbox-safe run` --references--> `ImageBackendTests`  [INFERRED]
+  docs/testing.md → tests/test_multimodal.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (25 total, 4 thin omitted)
+## Communities (28 total, 4 thin omitted)
 
 ### Community 0 - "JevRequest"
 Cohesion: 0.05
-Nodes (40): LLM2Jev Web Demo, How do LLM requests and Jev requests differ?, main(), main(), main(), Normalizer, Question, Choice (+32 more)
+Nodes (42): LLM2Jev Web Demo, How do LLM requests and Jev requests differ?, main(), main(), main(), Normalizer, Question, Choice (+34 more)
 
 ### Community 1 - "sglang_server.py"
-Cohesion: 0.08
-Nodes (37): base64, collections_abc, dataclasses, math, openai_types_chat, pathlib, BinaryBackendOutput, Ordered yes probabilities and usage returned by a binary backend. (+29 more)
+Cohesion: 0.10
+Nodes (33): base64, collections_abc, dataclasses, math, openai_types_chat, pathlib, Plan complete-candidate submissions; KV storage belongs to the engine., prepare_score_batches() (+25 more)
 
-### Community 2 - "validate_probability"
+### Community 2 - "Usage"
 Cohesion: 0.22
-Nodes (6): K, copy_probability_distribution(), Validate and return one finite probability., Copy and validate a non-empty probability distribution., validate_probability(), ProbabilityUtilsTests
+Nodes (4): ChatPrompt, Input and output token counts, when reported by the model backend., Usage, UsageTests
 
 ### Community 3 - "SGLangBackend"
-Cohesion: 0.07
-Nodes (19): How does staging help the first request?, Outputs and cache behavior, Shared prefixes: reuse context across multiple decisions, Why is the same context processed more than once?, BinaryBackend, ChatPrompt, Protocol, Batch scorer that returns one P(yes) for each rendered prompt. (+11 more)
+Cohesion: 0.22
+Nodes (3): Prefill-only binary scorer using SGLang's native scoring and prefix cache., SGLangBackend, SGLangBackendTests
 
-### Community 4 - "score_result"
-Cohesion: 0.09
-Nodes (18): contextlib, copy, io, SimpleNamespace, Any, score_output(), sys, ImageHTTPTests (+10 more)
+### Community 4 - "test_sglang_server.py"
+Cohesion: 0.14
+Nodes (10): contextlib, copy, io, SimpleNamespace, sys, GenerateReqInput, native_modules(), process_content_for_template_format() (+2 more)
 
 ### Community 5 - "BinaryQuestion"
-Cohesion: 0.09
-Nodes (15): Candidate, is_multimodal(), Any, BinaryQuestion, A model-independent yes/no task compiled from a Jev question., append_content(), ChatPrompt, JSONContent (+7 more)
+Cohesion: 0.10
+Nodes (12): Candidate, BinaryQuestion, A model-independent yes/no task compiled from a Jev question., append_content(), ChatPrompt, JSONContent, Render one binary question for a model backend., Serialize prompt content deterministically while keeping strings readable. (+4 more)
 
 ### Community 6 - "staged_batches"
 Cohesion: 0.31
@@ -104,32 +107,40 @@ Cohesion: 0.11
 Nodes (16): concurrent_futures, fetch(), git_sha(), main(), download(), Fetch the pinned Apache-2.0 Panda assets used by the MuJoCo demo., DemoHandler, Serve the web demo and proxy requests to an LLM2Jev HTTP server. (+8 more)
 
 ### Community 8 - "mujoco_demo.py"
-Cohesion: 0.07
-Nodes (22): action_criteria(), direction(), JevClient, main(), PandaPickPlace, Path, One-stage LLM2Jev control of a physical Panda pick-and-place scene., relation() (+14 more)
+Cohesion: 0.06
+Nodes (26): argparse, action_criteria(), direction(), JevClient, main(), PandaPickPlace, Path, One-stage LLM2Jev control of a physical Panda pick-and-place scene. (+18 more)
 
 ### Community 9 - "app.js"
 Cohesion: 0.15
 Nodes (19): addCriteriaRow(), addQuestion(), collectRequest(), connectionStatus, defaults, input(), parseState(), probabilityRows() (+11 more)
 
-### Community 10 - "_parse_request"
-Cohesion: 0.15
-Nodes (10): main(), _parse_request(), _parse_submission_args(), Any, Register the System One endpoint on SGLang's existing FastAPI app., register_systemone_route(), systemone(), _validate_server_args() (+2 more)
+### Community 10 - "ServerArgumentTests"
+Cohesion: 0.22
+Nodes (7): main(), _parse_submission_args(), Any, Register the System One endpoint on SGLang's existing FastAPI app., register_systemone_route(), _validate_server_args(), ServerArgumentTests
 
-### Community 11 - "llm2jev/__init__.py"
-Cohesion: 0.05
-Nodes (24): argparse, Score image evidence with Transformers or SGLang, without decoding., Evaluate a Jev request with a local SGLang engine., Run a mixed LLM2Jev request with a local Transformers model., ChoiceAnswer, NoulAnswer, A selected choice and the probability of every available choice., A probability-weighted score and its ordered rubric. (+16 more)
+### Community 11 - "JevResponse"
+Cohesion: 0.06
+Nodes (20): K, ChoiceAnswer, NoulAnswer, A selected choice and the probability of every available choice., A probability-weighted score and its ordered rubric., The probability that the answer is yes or the statement is true., ScoreAnswer, _format_json() (+12 more)
 
 ### Community 12 - "ImageBackendTests"
-Cohesion: 0.12
-Nodes (14): Baseline sandbox-safe run, Current sandbox-safe command, External baseline coverage to add, External real-model integration, Important finding, Inherited suite inventory, Sandbox-safe, Testing environments and inherited-suite inventory (+6 more)
+Cohesion: 0.11
+Nodes (15): Baseline sandbox-safe run, Compile and package-build baseline, Current sandbox-safe command, External baseline coverage to add, External real-model integration, Important finding, Inherited suite inventory, Sandbox-safe (+7 more)
 
-### Community 14 - "normalize_l1"
-Cohesion: 0.43
-Nodes (3): normalize_l1(), Normalize non-negative values to sum to one, or return a uniform distribution., NormalizeL1Tests
+### Community 13 - "llm2jev/__init__.py"
+Cohesion: 0.06
+Nodes (25): BinaryBackend, BinaryBackendOutput, ChatPrompt, Protocol, Ordered yes probabilities and usage returned by a binary backend., Batch scorer that returns one P(yes) for each rendered prompt., Score prompts in input order without generating text., Any (+17 more)
+
+### Community 14 - "score_result"
+Cohesion: 0.33
+Nodes (6): Any, score_output(), generate(), ImageScoreOutputTests, score_result(), generate()
 
 ### Community 17 - "Research architecture and decision log"
 Cohesion: 0.08
 Nodes (25): Architecture direction, Change protocol, D001 — Fork LLM2Jev as the application base, D002 — No training is required, D003 — Separate scoring strategy from inference backend, D004 — Add llama.cpp/GGUF as the first new backend, D005 — Full candidate continuation likelihood is an experimental scoring strategy, D006 — Preserve independent binary scoring as baseline (+17 more)
+
+### Community 18 - ".__init__"
+Cohesion: 0.33
+Nodes (3): Any, Path, Shut down this backend's SGLang engine and release GPU resources.
 
 ### Community 19 - "Repository Guidelines"
 Cohesion: 0.14
@@ -147,6 +158,10 @@ Nodes (9): Confidence is also calculated in code, From Jev Request to LLM Reques
 Cohesion: 0.25
 Nodes (7): Attribution, Demo video, Dependencies, Fetch the Panda assets, LLM2Jev Pick & Place Arm Demo, Run the MuJoCo version, Start the local service
 
+### Community 25 - "Shared prefixes: reuse context across multiple decisions"
+Cohesion: 0.50
+Nodes (4): How does staging help the first request?, Outputs and cache behavior, Shared prefixes: reuse context across multiple decisions, Why is the same context processed more than once?
+
 ### Community 26 - "Using multimodal data"
 Cohesion: 0.29
 Nodes (7): Building a request, Choosing where to place images, HTTP API calls, SGLang backend, Supported image sources, Transformers backend, Using multimodal data
@@ -156,18 +171,18 @@ Cohesion: 0.40
 Nodes (5): Choosing a mode, SGLang Python API, System One HTTP API, Transformers Backend, Usage guide
 
 ## Knowledge Gaps
-- **83 isolated node(s):** `questionsElement`, `template`, `submitButton`, `validationMessage`, `connectionStatus` (+78 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 195 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **84 isolated node(s):** `questionsElement`, `template`, `submitButton`, `validationMessage`, `connectionStatus` (+79 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 196 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `SGLangBackend` connect `SGLangBackend` to `JevRequest`, `sglang_server.py`, `llm2jev/__init__.py`, `README.md`?**
+- **Why does `SGLangBackend` connect `SGLangBackend` to `JevRequest`, `sglang_server.py`, `Usage`, `llm2jev/__init__.py`, `.__init__`, `README.md`, `Shared prefixes: reuse context across multiple decisions`?**
   _High betweenness centrality (0.122) - this node is a cross-community bridge._
-- **Why does `JevRequest` connect `JevRequest` to `sglang_server.py`, `score_result`, `_parse_request`, `llm2jev/__init__.py`, `Usage guide`?**
+- **Why does `JevRequest` connect `JevRequest` to `sglang_server.py`, `llm2jev/__init__.py`, `Usage guide`?**
   _High betweenness centrality (0.096) - this node is a cross-community bridge._
-- **Why does `Shared prefixes: reuse context across multiple decisions` connect `SGLangBackend` to `README.md`?**
+- **Why does `Shared prefixes: reuse context across multiple decisions` connect `Shared prefixes: reuse context across multiple decisions` to `SGLangBackend`, `llm2jev/__init__.py`, `README.md`?**
   _High betweenness centrality (0.086) - this node is a cross-community bridge._
 - **Are the 52 inferred relationships involving `JevRequest` (e.g. with `SGLang Python API` and `main()`) actually correct?**
   _`JevRequest` has 52 INFERRED edges - model-reasoned connections that need verification._
