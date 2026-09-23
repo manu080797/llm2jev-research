@@ -88,6 +88,22 @@ The model-free CI workflow `.github/workflows/unit-tests.yml` runs this command 
 
 The next task in issue #1 is to run and document the sandbox-safe suite. Optional multimodal tests may be skipped when their optional local dependencies are not installed; skips must be reported rather than silently treated as executed coverage.
 
+## Baseline sandbox-safe run
+
+First recorded model-free CI baseline:
+
+- commit under test: `02bea14935f3a7d152556e89aaa35476b3a1faf0`;
+- environment: GitHub-hosted `ubuntu-latest`, Python 3.12 via `astral-sh/setup-uv`, base project dependencies from `uv sync`;
+- command: `uv run python -m unittest discover -s tests -v`;
+- result: **134 discovered, 124 passed/executed, 10 skipped, 0 failures, 0 errors**;
+- runtime reported by unittest: **0.121 s**.
+
+All 10 skips were methods in `test_multimodal.ImageBackendTests`, each skipped with `Pillow is optional`. The base dependency set intentionally does not install the optional `transformers` extra, so this baseline does not claim execution coverage for those optional multimodal backend tests.
+
+The successful baseline validates the model-free inherited unit/regression lane only. It does **not** validate any real model, live SGLang runtime, real Transformers inference, multimodal VLM inference, KV/Radix-cache performance, or cross-backend numerical agreement.
+
+GitHub Actions run: `35814849823` (`Sandbox-safe tests`).
+
 ## External baseline coverage to add
 
 Before making claims about real-model behavior, provide reproducible external smoke/integration commands for at least:
