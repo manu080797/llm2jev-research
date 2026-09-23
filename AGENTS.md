@@ -6,11 +6,11 @@ This repository is the `llm2jev-research` fork of LLM2Jev. Its purpose is to res
 
 Before making architectural or research changes, read:
 
-- `docs/research-design.md` — source of truth for goals, architecture, accepted decisions, methodology, phases, and open questions.
-- GitHub issue #1 — operational roadmap and task tracker.
+- `docs/research-design.md` — source of truth for goals, architecture, accepted decisions, methodology, phase definitions, and open questions.
+- GitHub issue #1 — **authoritative operational task/status tracker**.
 - Existing relevant user-facing documentation under `docs/`.
 
-Do not silently replace accepted design decisions. If evidence requires a change, add a new decision entry to `docs/research-design.md` and explicitly supersede the prior decision. Link meaningful implementation work to issue #1 or a more specific issue created from it.
+Do not duplicate task completion state in `README.md` or `docs/research-design.md`; keep checkboxes and operational status in issue #1. Do not silently replace accepted design decisions. If evidence requires a change, add a new decision entry to `docs/research-design.md` and explicitly supersede the prior decision. Link meaningful implementation work to issue #1 or a more specific issue created from it.
 
 ## Project Structure & Module Organization
 
@@ -38,7 +38,7 @@ ModelBackend
 SGLang   Transformers  llama.cpp/GGUF
 ```
 
-The existing independent yes/no scorer is the baseline, not a permanently fixed architecture. Preserve it while introducing alternative scorers behind a common abstraction.
+The existing independent yes/no scorer is the baseline, not a permanently fixed architecture. Preserve it while introducing alternative scorers behind a common abstraction. Its prefill-only next-token behavior is a property of the current binary strategy, not a requirement that should be imposed on continuation or masked/diffusion strategies.
 
 Requirements:
 
@@ -47,7 +47,7 @@ Requirements:
 - do not make the semantic layer BitNet-specific;
 - do not introduce free-form generation when direct scoring/logits suffice;
 - keep scoring strategy independent from runtime/backend;
-- preserve or improve shared-prefix/KV reuse;
+- preserve or improve shared-prefix/KV reuse where the scorer/backend permits it;
 - expose raw scores separately from normalized relative probabilities when applicable;
 - do not describe normalized candidate scores as calibrated correctness probabilities unless calibration has actually been measured;
 - benchmark competing approaches before changing the preferred/default strategy.
@@ -86,6 +86,8 @@ When reporting comparative results, record enough environment information to rep
 
 Track accuracy and robustness alongside performance. The current research plan includes accuracy, NLL/Brier/ECE where meaningful, order and prompt perturbation stability, selective prediction, latency, throughput, RAM/model footprint, and CPU efficiency.
 
+For independent binary scoring, candidate scores are order-independent by construction, but deterministic tie-breaking may still depend on the original `criteria` order. Tests and claims about order invariance must preserve that distinction.
+
 ## Commit & Pull Request Guidelines
 
 Use concise imperative commit subjects, for example `Add continuation scoring strategy`. Keep commits focused. Pull requests should explain the behavior change, list verification commands, link the relevant issue, and identify protocol, scoring, probability, or performance assumptions.
@@ -96,7 +98,7 @@ Include sample JSON for wire-format changes. Include benchmark artifacts or mach
 
 ## Current Research Sequence
 
-The current roadmap is tracked in issue #1. In broad terms:
+Issue #1 owns task completion status. The non-status phase sequence is:
 
 1. establish and record the upstream baseline;
 2. extract the existing binary scorer behind a scoring-strategy abstraction without changing behavior;

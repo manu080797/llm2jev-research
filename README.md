@@ -7,7 +7,7 @@
 # 🧠 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference
 <br/>
 
-[![Python](https://img.shields.io/badge/python-3.12%2B-blue?style=flat-square)](pyproject.toml)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square)](pyproject.toml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green?style=flat-square)](LICENSE)
 [![Jev API](https://img.shields.io/badge/API-%2Fv1%2Fsystemone%20compatible-orange?style=flat-square)](docs/usage.md)
 
@@ -26,16 +26,32 @@ Planned research includes:
 - a generic `ScoringStrategy` layer retaining the current binary yes/no method while adding label-token and full candidate-continuation likelihood experiments;
 - a generic `ModelBackend` boundary spanning the existing SGLang/Transformers implementations and a planned llama.cpp/GGUF backend;
 - CPU-oriented evaluation, including BitNet without making the semantic API BitNet-specific;
-- shared-prefix/KV reuse across scoring methods;
+- shared-prefix/KV reuse across scoring methods where the runtime and scorer permit it;
 - reproducible evaluation of decision quality, robustness, uncertainty diagnostics, latency, throughput, memory, and CPU efficiency;
 - later masked/diffusion scoring experiments behind an appropriate backend primitive.
 
 No fine-tuning or project-specific training data is required by the baseline design. Competing scorers and models are treated as experiments until comparative evidence supports a default.
 
-See **[Research design and decision log](docs/research-design.md)** for the architecture, accepted decisions, methodology, and open questions. Implementation progress is tracked in **[issue #1](https://github.com/manu080797/llm2jev-research/issues/1)**.
+See **[Research design and decision log](docs/research-design.md)** for architecture, accepted decisions, methodology, and open questions. **[Issue #1](https://github.com/manu080797/llm2jev-research/issues/1)** is the authoritative implementation task/status tracker.
 
+## ✅ Current LLM2Jev Baseline
 
-## 📰 News
+The current implementation inherited from upstream uses independent binary candidate judgments:
+
+- **Prefill-only binary scoring:** each candidate is turned into a yes/no judgment and scored from the next-token `yes`/`no` logits without decoding an answer.
+- **Candidate-score order independence:** each Choice candidate is evaluated independently, so reordering candidates does not change an individual candidate's input or score. Exact ties are resolved deterministically using the original `criteria` order.
+- **Multimodal inputs:** text and images can be combined in `state` or `instructions` using SGLang or Transformers.
+- **Shared-prefix reuse:** staged SGLang submissions reuse Radix Cache prefixes within a request.
+
+These properties describe the **current binary scorer**, not hard constraints on every research scorer. In particular, full candidate-continuation likelihood teacher-forces candidate tokens and therefore is not the same single-next-token prefill-only operation.
+
+Candidates share `state`, and candidates for the same question also share its `instructions`. LLM2Jev first scores a real `criteria` candidate to establish the prefix cache, then submits candidates that can reuse it. Each candidate is scored once, reducing repeated computation for long inputs with many candidates.
+
+![Staged candidate scoring reuses state and question instructions through SGLang Radix Cache.](assets/shared-prefix-stages.svg)
+
+Learn how the current baseline works: [From Jev Request to LLM Request](docs/request-to-model.md) → [Shared-prefix design](docs/shared-prefix-cache.md).
+
+## 📰 Upstream Baseline News
 
 - **September 23** - **[MuJoCo pick-and-place demo](demos/pick_place/README.md):** added LLM2Jev control of a simulated Panda arm with per-step decision.
 - **September 22** - **[Multimodal inputs](docs/multimodal.md):** added text-and-image requests for SGLang, Transformers, and the System One HTTP API.
@@ -43,22 +59,11 @@ See **[Research design and decision log](docs/research-design.md)** for the arch
 - **September 21** - **Prefix reuse on cold requests:** added staged candidate submission for reusing SGLang's Radix Cache, with [architecture](docs/request-to-model.md), [usage](docs/shared-prefix-cache.md), and [benchmark](docs/shared-prefix-benchmarks.md) documentation.
 - **September 20** - **SGLang and System One API:** added the SGLang scoring backend and a compatible [`POST /v1/systemone`](docs/usage.md#system-one-http-api) endpoint.
 
-## ✨ Key Features
-
-- **Prefill only:** compute probabilities from logits during prefill and assemble results directly, without token-by-token decoding.
-- **Multimodal inputs:** combine text and images in `state` or `instructions`, with support for both SGLang and Transformers.
-- **Order-independent options:** evaluate each Choice candidate independently, so reordering options does not introduce a positional preference or change their scores.
-- **Prefix reuse on cold requests:** stage candidate submissions to reuse SGLang's Radix Cache within a single request, including a first request with no relevant cached prefix.
-
-Candidates share `state`, and candidates for the same question also share its `instructions`. LLM2Jev first scores a real `criteria` candidate to establish the prefix cache, then submits candidates that can reuse it. Each candidate is scored once, reducing repeated computation for long inputs with many candidates.
-
-![Staged candidate scoring reuses state and question instructions through SGLang Radix Cache.](assets/shared-prefix-stages.svg)
-
-Learn how it works: [From Jev Request to LLM Request](docs/request-to-model.md) → [Shared-prefix design](docs/shared-prefix-cache.md).
-
 ## 🚀 Quick Start
 
-On Linux with a supported NVIDIA GPU, run a local model through SGLang:
+The currently implemented backends are the upstream SGLang and Transformers paths. llama.cpp/GGUF CPU support is part of the research roadmap and is not implemented yet.
+
+On Linux with a supported NVIDIA GPU, run the current SGLang baseline:
 
 ```bash
 git clone https://github.com/manu080797/llm2jev-research.git
@@ -104,24 +109,23 @@ See the [Usage guide](docs/usage.md) for complete examples:
   </tr>
 </table>
 
+## 📊 Existing Baseline Benchmarks
 
-## 📊 Benchmarks
-
-See [Performance benchmarks](docs/shared-prefix-benchmarks.md) for the Qwen3-1.7B / RTX 5090 measurements, test conditions, and comparison of `staged` and `all` across cold and warm caches. Gains depend on input length, candidate count, and cache state.
+See [Performance benchmarks](docs/shared-prefix-benchmarks.md) for the upstream Qwen3-1.7B / RTX 5090 measurements, test conditions, and comparison of `staged` and `all` across cold and warm caches. Gains depend on input length, candidate count, and cache state. These are baseline runtime measurements, not evidence that one research scoring strategy is preferred.
 
 ## 🗺️ Research Roadmap
 
-The detailed, actively maintained roadmap is in [issue #1](https://github.com/manu080797/llm2jev-research/issues/1), with architectural decisions in [docs/research-design.md](docs/research-design.md).
+The authoritative task/status tracker is [issue #1](https://github.com/manu080797/llm2jev-research/issues/1). Architectural rationale and phase definitions live in [docs/research-design.md](docs/research-design.md).
 
-Current phases are:
+The research sequence is:
 
-- [ ] Establish and record the existing LLM2Jev baseline.
-- [ ] Separate scoring strategy from inference backend while preserving binary-scoring behavior.
-- [ ] Add a generic llama.cpp/GGUF CPU backend.
-- [ ] Implement and evaluate full candidate continuation likelihood.
-- [ ] Integrate and benchmark BitNet through the generic backend interface.
-- [ ] Build reproducible quality, robustness, calibration-diagnostic, and performance evaluation.
-- [ ] Evaluate label-token and masked/diffusion scoring as additional experiments.
+1. establish and record the existing LLM2Jev baseline;
+2. separate scoring strategy from inference backend while preserving binary-scoring behavior;
+3. add a generic llama.cpp/GGUF CPU backend;
+4. implement and evaluate full candidate-continuation likelihood;
+5. integrate and benchmark BitNet through the generic backend interface;
+6. build reproducible quality, robustness, uncertainty, and performance evaluation;
+7. evaluate label-token and masked/diffusion scoring as additional experiments.
 
 ## 🧪 Tests
 

@@ -1,6 +1,6 @@
 # Research architecture and decision log
 
-This document is the durable source of truth for the research fork. Keep implementation rationale here; use the tracking issue for operational task status.
+This document is the durable source of truth for research architecture, rationale, methodology, phase definitions, and design decisions. **GitHub issue #1 is the sole authoritative tracker for task completion/status.** Do not mirror operational checkboxes here.
 
 ## Goal
 
@@ -13,7 +13,7 @@ Primary constraints:
 - support interchangeable model runtimes;
 - avoid free-form generation when a distribution can be read/scored directly;
 - make scoring strategy independent from model backend;
-- optimize shared-prefix/KV reuse;
+- optimize shared-prefix/KV reuse where the scorer/backend permits it;
 - benchmark correctness, robustness, calibration-like behavior, latency, throughput, memory, and CPU efficiency.
 
 ## Architecture direction
@@ -37,7 +37,7 @@ SGLang   Transformers  llama.cpp/GGUF
 
 Masked/diffusion models should use a separate low-level backend primitive rather than pretending to be autoregressive. The semantic layer should consume candidate scores without depending on how the backend produced them.
 
-## Initial decisions
+## Decisions
 
 ### D001 — Fork LLM2Jev as the application base
 **Status:** accepted
@@ -75,12 +75,12 @@ For candidate C=(c1,...,cN), score conditional token likelihood:
 L(C|X) = sum_t log P(c_t | X, c_<t)
 ```
 
-Length normalization and null-context/prior correction must be explicit experimental parameters, not hidden behavior.
+Length normalization and null-context/prior correction must be explicit experimental parameters, not hidden behavior. Unlike the current binary scorer's single next-token yes/no readout, continuation likelihood teacher-forces the candidate token sequence.
 
 ### D006 — Preserve independent binary scoring as baseline
 **Status:** accepted
 
-LLM2Jev's yes/no candidate scoring remains the compatibility/reference strategy. It is naturally candidate-order invariant and provides a direct comparison against continuation scoring.
+LLM2Jev's yes/no candidate scoring remains the compatibility/reference strategy. Individual candidate inputs and scores are order-independent by construction because candidates are evaluated independently. Deterministic tie-breaking may still depend on the original `criteria` order.
 
 ### D007 — Benchmark before choosing a preferred scorer/model
 **Status:** accepted
@@ -108,66 +108,49 @@ At minimum record:
 
 Candidate benchmark sources include MMLU-Pro, ARC-Challenge, HellaSwag, PIQA, BoolQ, WinoGrande, TruthfulQA-MC, ANLI/MNLI and selected BBH tasks. Use development data for evaluator choices and preserve held-out evaluation data.
 
-## Planned implementation phases
+## Implementation phases
+
+Operational task state for every phase belongs in [issue #1](https://github.com/manu080797/llm2jev-research/issues/1). The phase descriptions here define scope and sequencing only.
 
 ### Phase 0 — Repository baseline
-- [x] Fork upstream LLM2Jev.
-- [x] Remove Chinese duplicate documentation.
-- [ ] Verify existing tests on the research fork.
-- [ ] Record baseline behavior/performance for existing backends.
+
+Verify the inherited test suite, record current SGLang/Transformers behavior, and establish reproducible baseline performance/environment metadata before architectural refactoring.
 
 ### Phase 1 — Scoring abstraction
-- [ ] Define `ScoringStrategy` interface.
-- [ ] Refactor current yes/no implementation behind `BinaryScorer` without behavior change.
-- [ ] Add scorer-level unit tests.
-- [ ] Keep API compatibility.
+
+Define `ScoringStrategy`, move the existing yes/no behavior behind `BinaryScorer` without observable behavior change, preserve API compatibility, and add scorer-level regression tests.
 
 ### Phase 2 — llama.cpp backend
-- [ ] Define minimal generic `ModelBackend` contract.
-- [ ] Implement llama.cpp/GGUF backend.
-- [ ] Expose tokenization, prefill/logits and continuation scoring primitives needed by scorers.
-- [ ] Test with at least one conventional GGUF model.
-- [ ] Test CPU-only execution.
-- [ ] Measure shared-prefix/KV reuse.
+
+Define the minimal generic `ModelBackend` contract and implement llama.cpp/GGUF support for CPU execution. Expose only the inference primitives needed by scorers, test at least one conventional GGUF model, and measure shared-prefix/KV reuse rather than assuming its benefit.
 
 ### Phase 3 — Continuation scorer
-- [ ] Implement full conditional continuation log-likelihood.
-- [ ] Batch candidate suffixes where backend permits.
-- [ ] Implement configurable length normalization.
-- [ ] Implement optional null-context/prior correction.
-- [ ] Return raw and normalized scores separately.
-- [ ] Test candidates with unequal token lengths.
+
+Implement full conditional continuation log-likelihood, efficient candidate batching/branching where supported, explicit length normalization, optional null-context/prior correction, separate raw and normalized scores, and unequal-length candidate tests.
 
 ### Phase 4 — BitNet
-- [ ] Establish a known-good BitNet/bitnet.cpp model/runtime baseline.
-- [ ] Integrate through the generic backend boundary.
-- [ ] Verify model-specific activation/runtime correctness before benchmarking.
-- [ ] Benchmark binary vs continuation scoring on CPU.
+
+Establish a known-good BitNet/bitnet.cpp baseline, verify model/runtime correctness, integrate it through the generic backend boundary, and compare binary versus continuation scoring on CPU without introducing BitNet-specific semantics.
 
 ### Phase 5 — Evaluation harness
-- [ ] Build reproducible benchmark configuration.
-- [ ] Add option-order perturbations.
-- [ ] Add prompt-paraphrase perturbations.
-- [ ] Add abstention/insufficient-information experiments.
-- [ ] Integrate or interoperate with lm-evaluation-harness where useful.
-- [ ] Save machine-readable results and environment metadata.
+
+Build reproducible benchmark configuration and machine-readable results. Cover representative tasks, option-order perturbations, prompt paraphrases, abstention/insufficient-information experiments, quality/uncertainty metrics, and performance measurements. Interoperate with lm-evaluation-harness where useful.
 
 ### Phase 6 — Experimental backends
-- [ ] Evaluate label-token scorer.
-- [ ] Define `MaskedBackend` scoring primitive.
-- [ ] Evaluate small masked/diffusion models if CPU feasibility is credible.
-- [ ] Compare against autoregressive baselines under the same semantic API.
+
+Evaluate label-token scoring, define an appropriate `MaskedBackend` primitive, test small masked/diffusion models only when CPU feasibility is credible, and compare them against autoregressive baselines under the same semantic API.
 
 ## Change protocol
 
 For meaningful research changes:
 
-1. Link the change to the tracking issue.
+1. Link the change to issue #1 or a more specific issue derived from it.
 2. Update this document when architecture, assumptions, interfaces, benchmark methodology, or accepted decisions change.
-3. Add a new decision ID instead of silently rewriting an old rationale when a decision is reversed.
-4. Record supersession explicitly (for example, “D004 superseded by D012”).
-5. Keep experimental defaults configurable until evidence supports making them normative.
-6. Commit benchmark configuration/results needed to reproduce conclusions; do not rely only on prose claims.
+3. Keep operational completion/status only in GitHub issues; do not add mirrored task checkboxes here or in the README.
+4. Add a new decision ID instead of silently rewriting an old rationale when a decision is reversed.
+5. Record supersession explicitly (for example, “D004 superseded by D012”).
+6. Keep experimental defaults configurable until evidence supports making them normative.
+7. Commit benchmark configuration/results needed to reproduce conclusions; do not rely only on prose claims.
 
 ## Decision template
 
