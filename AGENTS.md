@@ -40,6 +40,12 @@ When `graphify-out/graph.json` exists:
 
 The workflow is `.github/workflows/update-graphify.yml`. If its Graphify version, output layout, maintenance commands, or CI behavior changes, update this section in the same change.
 
+## Reference Implementations
+
+For architecture/scoring/backend work, consult the role-specific references listed in `docs/research-design.md` before inventing a new mechanism. In particular: upstream LLM2Jev for the current binary/API behavior; AnyJev for label-token debiasing; daseinlabs/open-jev for continuation likelihood and prefix-shared option scoring; lm-evaluation-harness for evaluation abstractions; llama.cpp for GGUF/CPU runtime behavior; Microsoft BitNet for ternary inference; and razorback16/openjev for masked/diffusion readout.
+
+Treat these as references, not specifications. Preserve this repository's accepted decisions and generic interfaces unless evidence justifies a documented design change.
+
 ## Architecture Constraints
 
 Keep semantic scoring separate from model execution.
@@ -94,11 +100,20 @@ Prefer small explicit interfaces such as `ScoringStrategy` and `ModelBackend` ov
 
 ## Testing Guidelines
 
-Use `unittest.TestCase` and descriptive `test_<behavior>` methods. Every validation rule needs both a valid serialization case and an invalid-input case. Model-facing work should first use deterministic fake backends; ordinary tests must not require network access or model downloads.
+Development may occur in the OpenAI cloud sandbox. Do **not** assume that environment can download or run real LLM weights, access a GPU, run SGLang/BitNet specialized hardware paths, or produce meaningful model-performance benchmarks.
 
-For scorer refactors, retain regression tests proving the existing binary path is behaviorally unchanged. For continuation scoring, include unequal-token-length candidates and verify raw conditional scores independently of normalization. Backend-specific optimizations need correctness tests before performance claims.
+Split validation explicitly:
 
-Run the full suite and recursive compile check before submitting changes.
+- **Sandbox-safe tests are mandatory:** `unittest` tests, deterministic fake/model-stub backends, scorer mathematics, prompt/request compilation, serialization, normalization, API contracts, mocked runtime/HTTP behavior, `compileall`, and package builds. These tests must not require network access, model downloads, GPUs, or API keys.
+- **Real-model integration tests are external:** actual Transformers/SGLang inference, llama.cpp/GGUF model execution, BitNet/bitnet.cpp numerical checks, real KV-cache behavior, cross-runtime comparisons, and all model quality/performance benchmarks. Run these on a provisioned local/external machine or future self-hosted runner.
+
+Never report an external integration test as passed when it was not run. If a code change requires such validation, commit a reproducible command/configuration for it and explicitly record it as `not run in OpenAI sandbox` until results exist.
+
+Use `unittest.TestCase` and descriptive `test_<behavior>` methods. Every validation rule needs both a valid serialization case and an invalid-input case. Model-facing work should first use deterministic fake backends so semantic and orchestration logic remains testable without weights.
+
+For scorer refactors, retain regression tests proving the existing binary path is behaviorally unchanged. For continuation scoring, include unequal-token-length candidates and verify raw conditional scores independently of normalization. Backend-specific optimizations need real-runtime correctness tests before performance claims.
+
+Before submitting changes from the sandbox, run all applicable sandbox-safe tests plus `uv run python -m compileall -q src tests` and `uv build`. Document any external tests still required.
 
 ## Research and Benchmark Discipline
 
