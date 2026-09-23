@@ -21,10 +21,12 @@
 
 The upstream independent yes/no candidate scorer remains the compatibility baseline. This fork is extending the architecture so **scoring strategy** and **model backend** are independent and can be compared under the same Jev-style API.
 
+Current research architecture includes a thin `ScoringStrategy` protocol and `BinaryScorer` wrapper around the inherited yes/no method. `LLM2Jev` still supports the original `backend=` API and can also dispatch directly through `scoring_strategy=`.
+
 Planned research includes:
 
-- a generic `ScoringStrategy` layer retaining the current binary yes/no method while adding label-token and full candidate-continuation likelihood experiments;
-- a generic `ModelBackend` boundary spanning the existing SGLang/Transformers implementations and a planned llama.cpp/GGUF backend;
+- continuation and label-token strategies behind the scoring boundary;
+- a generic `ModelBackend` boundary informed by the upcoming llama.cpp/GGUF experiment rather than designed fully in advance;
 - CPU-oriented evaluation, including BitNet without making the semantic API BitNet-specific;
 - shared-prefix/KV reuse across scoring methods where the runtime and scorer permit it;
 - reproducible evaluation of decision quality, robustness, uncertainty diagnostics, latency, throughput, memory, and CPU efficiency;

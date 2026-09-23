@@ -73,6 +73,8 @@ This allows the same model/runtime to compare:
 2. label-token scoring;
 3. full candidate continuation likelihood.
 
+Current thin implementation: `ScoringStrategy` exposes only `score(request: JevRequest) -> JevResponse`. `BinaryScorer` owns the existing `BinaryBackend`, prompt renderer, normalization, and response assembly path. `LLM2Jev` accepts either the legacy `backend=` path or an explicit `scoring_strategy=`. This boundary is intentionally provisional: the llama.cpp and continuation experiments should determine whether a lower-level generic `ModelBackend` contract is actually needed and what it must expose.
+
 ### D004 — Add llama.cpp/GGUF as the first new backend
 **Status:** accepted
 
