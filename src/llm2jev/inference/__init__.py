@@ -10,17 +10,20 @@ from .prompt import (
     PromptRenderer,
     serialize_content,
 )
+from .scoring import BinaryScorer, ScoringStrategy
 
 __all__ = [
     "BinaryBackend",
     "BinaryBackendOutput",
     "BinaryQuestion",
+    "BinaryScorer",
     "ChatMessage",
     "ChatPrompt",
     "DefaultPromptRenderer",
     "LLM2Jev",
     "Normalizer",
     "PromptRenderer",
+    "ScoringStrategy",
     "assemble_response",
     "compile_binary_questions",
     "normalize_l1",

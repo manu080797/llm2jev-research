@@ -5,28 +5,32 @@ from dataclasses import dataclass, field
 from ..backend.base import BinaryBackend
 from ..core.request import JevRequest
 from ..core.response import JevResponse
-from .assembler import Normalizer, assemble_response
-from .binary import compile_binary_questions
+from .assembler import Normalizer
 from .normalization import normalize_l1
 from .prompt import DefaultPromptRenderer, PromptRenderer
+from .scoring import BinaryScorer, ScoringStrategy
 
 
 @dataclass(slots=True, kw_only=True)
 class LLM2Jev:
-    """Compile, score, and assemble Jev requests."""
+    """Evaluate Jev requests through an interchangeable scoring strategy."""
 
-    backend: BinaryBackend
+    backend: BinaryBackend | None = None
+    scoring_strategy: ScoringStrategy | None = None
     renderer: PromptRenderer = field(default_factory=DefaultPromptRenderer)
     normalizer: Normalizer = normalize_l1
 
+    def __post_init__(self) -> None:
+        if self.backend is None and self.scoring_strategy is None:
+            raise ValueError("backend or scoring_strategy is required")
+
     def evaluate(self, request: JevRequest) -> JevResponse:
-        tasks = compile_binary_questions(request)
-        prompts = tuple(self.renderer.render(task) for task in tasks)
-        output = self.backend.score(model=request.model, prompts=prompts)
-        return assemble_response(
-            request=request,
-            tasks=tasks,
-            yes_probabilities=output.yes_probabilities,
-            usage=output.usage,
+        if self.scoring_strategy is not None:
+            return self.scoring_strategy.score(request)
+
+        assert self.backend is not None
+        return BinaryScorer(
+            backend=self.backend,
+            renderer=self.renderer,
             normalizer=self.normalizer,
-        )
+        ).score(request)
