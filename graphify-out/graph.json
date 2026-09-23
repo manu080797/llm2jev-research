@@ -225,6 +225,19 @@
       "source_location": "L68"
     },
     {
+      "id": "src_llm2jev_core_answers_noulanswer",
+      "label": "NoulAnswer",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "sglang_server.py",
+      "file_type": "code",
+      "norm_label": "noulanswer",
+      "source_file": "src/llm2jev/core/answers.py",
+      "source_location": "L95"
+    },
+    {
       "id": "tests_test_utils_jsonutilstests",
       "label": "JsonUtilsTests",
       "_callable": true,
@@ -264,56 +277,17 @@
       "source_location": "L19"
     },
     {
-      "id": "src_llm2jev_core_answers_noulanswer",
-      "label": "NoulAnswer",
+      "id": "src_llm2jev_backend_transformers_backend_transformersbackend",
+      "label": "TransformersBackend",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
+      "community": 12,
+      "community_name": "TransformersBackend",
       "file_type": "code",
-      "norm_label": "noulanswer",
-      "source_file": "src/llm2jev/core/answers.py",
-      "source_location": "L95"
-    },
-    {
-      "id": "src_llm2jev_core_response_jevresponse",
-      "label": "JevResponse",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": "jevresponse",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L52"
-    },
-    {
-      "id": "tests_test_response_jevresponsetests",
-      "label": "JevResponseTests",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": "jevresponsetests",
-      "source_file": "tests/test_response.py",
-      "source_location": "L93"
-    },
-    {
-      "id": "tests_test_response_noulanswertests",
-      "label": "NoulAnswerTests",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": "noulanswertests",
-      "source_file": "tests/test_response.py",
-      "source_location": "L69"
+      "norm_label": "transformersbackend",
+      "source_file": "src/llm2jev/backend/transformers/backend.py",
+      "source_location": "L14"
     },
     {
       "id": "tests_test_multimodal_imagebackendtests",
@@ -322,7 +296,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": "imagebackendtests",
       "source_file": "tests/test_multimodal.py",
@@ -334,7 +308,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
+      "community": 2,
       "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": "choiceanswer",
@@ -342,12 +316,25 @@
       "source_location": "L14"
     },
     {
+      "id": "src_llm2jev_core_answers_scoreanswer",
+      "label": "ScoreAnswer",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": "scoreanswer",
+      "source_file": "src/llm2jev/core/answers.py",
+      "source_location": "L46"
+    },
+    {
       "id": "tests_test_response_choiceanswertests",
       "label": "ChoiceAnswerTests",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
+      "community": 2,
       "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": "choiceanswertests",
@@ -355,12 +342,38 @@
       "source_location": "L7"
     },
     {
+      "id": "tests_test_response_jevresponsetests",
+      "label": "JevResponseTests",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": "jevresponsetests",
+      "source_file": "tests/test_response.py",
+      "source_location": "L93"
+    },
+    {
+      "id": "tests_test_response_noulanswertests",
+      "label": "NoulAnswerTests",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": "noulanswertests",
+      "source_file": "tests/test_response.py",
+      "source_location": "L69"
+    },
+    {
       "id": "tests_test_response_probabilityvalidationtests",
       "label": "ProbabilityValidationTests",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
+      "community": 2,
       "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": "probabilityvalidationtests",
@@ -368,65 +381,13 @@
       "source_location": "L138"
     },
     {
-      "id": "tests_test_scoring_binaryscorertests",
-      "label": "BinaryScorerTests",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": "binaryscorertests",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L43"
-    },
-    {
-      "id": "tests_test_scoring_fakebackend",
-      "label": "FakeBackend",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": "fakebackend",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L17"
-    },
-    {
-      "id": "tests_test_scoring_fixedstrategy",
-      "label": "FixedStrategy",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": "fixedstrategy",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L30"
-    },
-    {
-      "id": "src_llm2jev_core_answers_scoreanswer",
-      "label": "ScoreAnswer",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "ScoreAnswer",
-      "file_type": "code",
-      "norm_label": "scoreanswer",
-      "source_file": "src/llm2jev/core/answers.py",
-      "source_location": "L46"
-    },
-    {
       "id": "tests_test_response_scoreanswertests",
       "label": "ScoreAnswerTests",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "ScoreAnswer",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": "scoreanswertests",
       "source_file": "tests/test_response.py",
@@ -439,7 +400,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": "probabilityutilstests",
       "source_file": "tests/test_utils.py",
@@ -472,32 +433,6 @@
       "source_location": "L21"
     },
     {
-      "id": "src_llm2jev_inference_scoring_scoringstrategy",
-      "label": "ScoringStrategy",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 22,
-      "community_name": "ScoringStrategy",
-      "file_type": "code",
-      "norm_label": "scoringstrategy",
-      "source_file": "src/llm2jev/inference/scoring.py",
-      "source_location": "L15"
-    },
-    {
-      "id": "tests_test_normalization_normalizel1tests",
-      "label": "NormalizeL1Tests",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "NormalizeL1Tests",
-      "file_type": "code",
-      "norm_label": "normalizel1tests",
-      "source_file": "tests/test_normalization.py",
-      "source_location": "L7"
-    },
-    {
       "id": "src_llm2jev_backend_base_binarybackend",
       "label": "BinaryBackend",
       "_callable": true,
@@ -509,6 +444,19 @@
       "norm_label": "binarybackend",
       "source_file": "src/llm2jev/backend/base.py",
       "source_location": "L28"
+    },
+    {
+      "id": "src_llm2jev_core_response_jevresponse",
+      "label": "JevResponse",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": "jevresponse",
+      "source_file": "src/llm2jev/core/response.py",
+      "source_location": "L52"
     },
     {
       "id": "src_llm2jev_inference_converter_llm2jev",
@@ -550,6 +498,58 @@
       "source_location": "L23"
     },
     {
+      "id": "src_llm2jev_inference_scoring_scoringstrategy",
+      "label": "ScoringStrategy",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": "scoringstrategy",
+      "source_file": "src/llm2jev/inference/scoring.py",
+      "source_location": "L15"
+    },
+    {
+      "id": "tests_test_normalization_normalizel1tests",
+      "label": "NormalizeL1Tests",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": "normalizel1tests",
+      "source_file": "tests/test_normalization.py",
+      "source_location": "L7"
+    },
+    {
+      "id": "tests_test_scoring_binaryscorertests",
+      "label": "BinaryScorerTests",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": "binaryscorertests",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L43"
+    },
+    {
+      "id": "tests_test_scoring_fixedstrategy",
+      "label": "FixedStrategy",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": "fixedstrategy",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L30"
+    },
+    {
       "id": "src_llm2jev_backend_base_binarybackendoutput",
       "label": "BinaryBackendOutput",
       "_callable": true,
@@ -576,19 +576,6 @@
       "source_location": "L14"
     },
     {
-      "id": "src_llm2jev_backend_transformers_backend_transformersbackend",
-      "label": "TransformersBackend",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "code",
-      "norm_label": "transformersbackend",
-      "source_file": "src/llm2jev/backend/transformers/backend.py",
-      "source_location": "L14"
-    },
-    {
       "id": "src_llm2jev_core_response_usage",
       "label": "Usage",
       "_callable": true,
@@ -602,6 +589,19 @@
       "source_location": "L33"
     },
     {
+      "id": "tests_test_multimodal_imagescoreoutputtests",
+      "label": "ImageScoreOutputTests",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": "imagescoreoutputtests",
+      "source_file": "tests/test_multimodal.py",
+      "source_location": "L323"
+    },
+    {
       "id": "tests_test_response_usagetests",
       "label": "UsageTests",
       "_callable": true,
@@ -613,6 +613,19 @@
       "norm_label": "usagetests",
       "source_file": "tests/test_response.py",
       "source_location": "L81"
+    },
+    {
+      "id": "tests_test_scoring_fakebackend",
+      "label": "FakeBackend",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": "fakebackend",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L17"
     },
     {
       "id": "tests_test_sglang_backend_sglangbackendtests",
@@ -634,7 +647,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "binarybackendoutputtests",
       "source_file": "tests/test_converter.py",
@@ -647,24 +660,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "failingbackend",
       "source_file": "tests/test_converter.py",
       "source_location": "L43"
-    },
-    {
-      "id": "tests_test_multimodal_imagescoreoutputtests",
-      "label": "ImageScoreOutputTests",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
-      "file_type": "code",
-      "norm_label": "imagescoreoutputtests",
-      "source_file": "tests/test_multimodal.py",
-      "source_location": "L323"
     },
     {
       "id": "tests_test_sglang_fakes_generatereqinput",
@@ -673,7 +673,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "generatereqinput",
       "source_file": "tests/test_sglang_fakes.py",
@@ -686,7 +686,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "scorebatchtests",
       "source_file": "tests/test_sglang_scoring.py",
@@ -929,18 +929,6 @@
       "norm_label": "assemble_response()",
       "source_file": "src/llm2jev/inference/assembler.py",
       "source_location": "L39"
-    },
-    {
-      "id": "src_llm2jev_inference_assembler_normalize",
-      "label": "_normalize()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "JevRequest",
-      "file_type": "code",
-      "norm_label": "_normalize()",
-      "source_file": "src/llm2jev/inference/assembler.py",
-      "source_location": "L19"
     },
     {
       "id": "src_llm2jev_inference_binary_compile_binary_questions",
@@ -1699,16 +1687,16 @@
       "source_location": "L9"
     },
     {
-      "id": "src_llm2jev_backend_transformers_image_inputs_has_images",
-      "label": "has_images()",
+      "id": "src_llm2jev_core_answers_noulanswer_to_dict",
+      "label": ".to_dict()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "sglang_server.py",
       "file_type": "code",
-      "norm_label": "has_images()",
-      "source_file": "src/llm2jev/backend/transformers/image_inputs.py",
-      "source_location": "L12"
+      "norm_label": ".to_dict()",
+      "source_file": "src/llm2jev/core/answers.py",
+      "source_location": "L105"
     },
     {
       "id": "src_llm2jev_core_multimodal_validate_multimodal",
@@ -1795,6 +1783,18 @@
       "source_location": "L31"
     },
     {
+      "id": "src_llm2jev_inference_assembler_normalize",
+      "label": "_normalize()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "sglang_server.py",
+      "file_type": "code",
+      "norm_label": "_normalize()",
+      "source_file": "src/llm2jev/inference/assembler.py",
+      "source_location": "L19"
+    },
+    {
       "id": "src_llm2jev_inference_binary_binaryquestion_post_init",
       "label": ".__post_init__()",
       "_callable": true,
@@ -1841,6 +1841,18 @@
       "norm_label": "is_json_value()",
       "source_file": "src/llm2jev/utils/json.py",
       "source_location": "L10"
+    },
+    {
+      "id": "src_llm2jev_utils_probability_validate_probabilities",
+      "label": "validate_probabilities()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "sglang_server.py",
+      "file_type": "code",
+      "norm_label": "validate_probabilities()",
+      "source_file": "src/llm2jev/utils/probability.py",
+      "source_location": "L21"
     },
     {
       "id": "tests_test_utils_jsonutilstests_test_copies_nested_json_containers",
@@ -2059,136 +2071,52 @@
       "source_location": "L47"
     },
     {
-      "id": "src_llm2jev_core_answers_noulanswer_to_dict",
-      "label": ".to_dict()",
+      "id": "src_llm2jev_backend_transformers_backend_transformersbackend_init",
+      "label": ".__init__()",
       "_callable": true,
       "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
+      "community": 12,
+      "community_name": "TransformersBackend",
       "file_type": "code",
-      "norm_label": ".to_dict()",
-      "source_file": "src/llm2jev/core/answers.py",
-      "source_location": "L105"
+      "norm_label": ".__init__()",
+      "source_file": "src/llm2jev/backend/transformers/backend.py",
+      "source_location": "L17"
     },
     {
-      "id": "src_llm2jev_core_response_format_json",
-      "label": "_format_json()",
+      "id": "src_llm2jev_backend_transformers_backend_transformersbackend_last_token_positions",
+      "label": "._last_token_positions()",
       "_callable": true,
       "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
+      "community": 12,
+      "community_name": "TransformersBackend",
       "file_type": "code",
-      "norm_label": "_format_json()",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L11"
+      "norm_label": "._last_token_positions()",
+      "source_file": "src/llm2jev/backend/transformers/backend.py",
+      "source_location": "L160"
     },
     {
-      "id": "src_llm2jev_core_response_jevresponse_json",
-      "label": ".json()",
+      "id": "src_llm2jev_backend_transformers_backend_transformersbackend_score",
+      "label": ".score()",
       "_callable": true,
       "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
+      "community": 12,
+      "community_name": "TransformersBackend",
       "file_type": "code",
-      "norm_label": ".json()",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L87"
+      "norm_label": ".score()",
+      "source_file": "src/llm2jev/backend/transformers/backend.py",
+      "source_location": "L89"
     },
     {
-      "id": "src_llm2jev_core_response_jevresponse_nouls",
-      "label": ".nouls()",
+      "id": "src_llm2jev_backend_transformers_image_inputs_has_images",
+      "label": "has_images()",
       "_callable": true,
       "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
+      "community": 12,
+      "community_name": "TransformersBackend",
       "file_type": "code",
-      "norm_label": ".nouls()",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L83"
-    },
-    {
-      "id": "src_llm2jev_core_response_jevresponse_post_init",
-      "label": ".__post_init__()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": ".__post_init__()",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L59"
-    },
-    {
-      "id": "src_llm2jev_core_response_jevresponse_to_dict",
-      "label": ".to_dict()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": ".to_dict()",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L90"
-    },
-    {
-      "id": "tests_test_response_jevresponsetests_test_json_rounds_floats_to_two_decimal_places_without_mutating_values",
-      "label": ".test_json_rounds_floats_to_two_decimal_places_without_mutating_values()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": ".test_json_rounds_floats_to_two_decimal_places_without_mutating_values()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L123"
-    },
-    {
-      "id": "tests_test_response_jevresponsetests_test_rejects_empty_answers",
-      "label": ".test_rejects_empty_answers()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": ".test_rejects_empty_answers()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L133"
-    },
-    {
-      "id": "tests_test_response_jevresponsetests_test_serializes_and_groups_answers",
-      "label": ".test_serializes_and_groups_answers()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": ".test_serializes_and_groups_answers()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L94"
-    },
-    {
-      "id": "tests_test_response_noulanswertests_test_rejects_out_of_range_probability",
-      "label": ".test_rejects_out_of_range_probability()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": ".test_rejects_out_of_range_probability()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L76"
-    },
-    {
-      "id": "tests_test_response_noulanswertests_test_serializes_noul_answer",
-      "label": ".test_serializes_noul_answer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "code",
-      "norm_label": ".test_serializes_noul_answer()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L70"
+      "norm_label": "has_images()",
+      "source_file": "src/llm2jev/backend/transformers/image_inputs.py",
+      "source_location": "L12"
     },
     {
       "id": "src_llm2jev_backend_transformers_image_inputs_load_transformers_images",
@@ -2196,7 +2124,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": "load_transformers_images()",
       "source_file": "src/llm2jev/backend/transformers/image_inputs.py",
@@ -2208,7 +2136,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": "prepare_image_prompts()",
       "source_file": "src/llm2jev/backend/transformers/image_inputs.py",
@@ -2220,7 +2148,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": ".require_transformers()",
       "source_file": "tests/test_multimodal.py",
@@ -2232,7 +2160,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": ".test_distinct_images_and_mixed_text_inputs_stay_separate()",
       "source_file": "tests/test_multimodal.py",
@@ -2244,7 +2172,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": ".test_missing_or_invalid_image_fails_in_transformers_loader()",
       "source_file": "tests/test_multimodal.py",
@@ -2256,7 +2184,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": ".test_separates_sources_from_template_without_loading_images()",
       "source_file": "tests/test_multimodal.py",
@@ -2268,11 +2196,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": ".test_text_transformers_rejects_image_instead_of_silently_ignoring_it()",
       "source_file": "tests/test_multimodal.py",
       "source_location": "L271"
+    },
+    {
+      "id": "tests_test_multimodal_imagebackendtests_test_transformers_constructor_loads_image_model_and_processor",
+      "label": ".test_transformers_constructor_loads_image_model_and_processor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "TransformersBackend",
+      "file_type": "code",
+      "norm_label": ".test_transformers_constructor_loads_image_model_and_processor()",
+      "source_file": "tests/test_multimodal.py",
+      "source_location": "L215"
     },
     {
       "id": "tests_test_multimodal_imagebackendtests_test_transformers_forwards_visual_metadata_and_scores_last_nonpadding_token",
@@ -2280,7 +2220,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": ".test_transformers_forwards_visual_metadata_and_scores_last_nonpadding_token()",
       "source_file": "tests/test_multimodal.py",
@@ -2292,7 +2232,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": ".test_transformers_reuses_native_loader_for_file_uri_and_data_url()",
       "source_file": "tests/test_multimodal.py",
@@ -2304,227 +2244,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": ".test_urls_are_forwarded_to_native_loaders_unchanged()",
       "source_file": "tests/test_multimodal.py",
       "source_location": "L184"
-    },
-    {
-      "id": "src_llm2jev_core_answers_choiceanswer_to_dict",
-      "label": ".to_dict()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "ChoiceAnswer",
-      "file_type": "code",
-      "norm_label": ".to_dict()",
-      "source_file": "src/llm2jev/core/answers.py",
-      "source_location": "L36"
-    },
-    {
-      "id": "src_llm2jev_core_response_jevresponse_choices",
-      "label": ".choices()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "ChoiceAnswer",
-      "file_type": "code",
-      "norm_label": ".choices()",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L75"
-    },
-    {
-      "id": "tests_test_response_choiceanswertests_test_choice_must_have_highest_probability",
-      "label": ".test_choice_must_have_highest_probability()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "ChoiceAnswer",
-      "file_type": "code",
-      "norm_label": ".test_choice_must_have_highest_probability()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L25"
-    },
-    {
-      "id": "tests_test_response_choiceanswertests_test_serializes_choice_answer",
-      "label": ".test_serializes_choice_answer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "ChoiceAnswer",
-      "file_type": "code",
-      "norm_label": ".test_serializes_choice_answer()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L8"
-    },
-    {
-      "id": "tests_test_response_probabilityvalidationtests_test_confidence_must_be_in_range",
-      "label": ".test_confidence_must_be_in_range()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "ChoiceAnswer",
-      "file_type": "code",
-      "norm_label": ".test_confidence_must_be_in_range()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L143"
-    },
-    {
-      "id": "tests_test_response_probabilityvalidationtests_test_probabilities_must_sum_to_one",
-      "label": ".test_probabilities_must_sum_to_one()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "ChoiceAnswer",
-      "file_type": "code",
-      "norm_label": ".test_probabilities_must_sum_to_one()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L139"
-    },
-    {
-      "id": "tests_test_scoring_binaryscorertests_test_llm2jev_accepts_strategy_without_binary_backend",
-      "label": ".test_llm2jev_accepts_strategy_without_binary_backend()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": ".test_llm2jev_accepts_strategy_without_binary_backend()",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L62"
-    },
-    {
-      "id": "tests_test_scoring_binaryscorertests_test_llm2jev_requires_backend_or_strategy",
-      "label": ".test_llm2jev_requires_backend_or_strategy()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": ".test_llm2jev_requires_backend_or_strategy()",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L75"
-    },
-    {
-      "id": "tests_test_scoring_binaryscorertests_test_scores_existing_binary_path",
-      "label": ".test_scores_existing_binary_path()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": ".test_scores_existing_binary_path()",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L44"
-    },
-    {
-      "id": "tests_test_scoring_fakebackend_init",
-      "label": ".__init__()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": ".__init__()",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L18"
-    },
-    {
-      "id": "tests_test_scoring_fakebackend_score",
-      "label": ".score()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": ".score()",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L22"
-    },
-    {
-      "id": "tests_test_scoring_fixedstrategy_init",
-      "label": ".__init__()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": ".__init__()",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L31"
-    },
-    {
-      "id": "tests_test_scoring_fixedstrategy_score",
-      "label": ".score()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": ".score()",
-      "source_file": "tests/test_scoring.py",
-      "source_location": "L34"
-    },
-    {
-      "id": "src_llm2jev_core_answers_scoreanswer_to_dict",
-      "label": ".to_dict()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "ScoreAnswer",
-      "file_type": "code",
-      "norm_label": ".to_dict()",
-      "source_file": "src/llm2jev/core/answers.py",
-      "source_location": "L84"
-    },
-    {
-      "id": "src_llm2jev_core_response_jevresponse_scores",
-      "label": ".scores()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "ScoreAnswer",
-      "file_type": "code",
-      "norm_label": ".scores()",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L79"
-    },
-    {
-      "id": "tests_test_response_scoreanswertests_test_requires_matching_legend_and_probability_levels",
-      "label": ".test_requires_matching_legend_and_probability_levels()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "ScoreAnswer",
-      "file_type": "code",
-      "norm_label": ".test_requires_matching_legend_and_probability_levels()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L50"
-    },
-    {
-      "id": "tests_test_response_scoreanswertests_test_requires_weighted_average_score",
-      "label": ".test_requires_weighted_average_score()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "ScoreAnswer",
-      "file_type": "code",
-      "norm_label": ".test_requires_weighted_average_score()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L59"
-    },
-    {
-      "id": "tests_test_response_scoreanswertests_test_serializes_integer_levels_as_json_keys",
-      "label": ".test_serializes_integer_levels_as_json_keys()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "ScoreAnswer",
-      "file_type": "code",
-      "norm_label": ".test_serializes_integer_levels_as_json_keys()",
-      "source_file": "tests/test_response.py",
-      "source_location": "L31"
     },
     {
       "id": "src_llm2jev_core_answers_choiceanswer_post_init",
@@ -2532,11 +2256,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": ".__post_init__()",
       "source_file": "src/llm2jev/core/answers.py",
       "source_location": "L23"
+    },
+    {
+      "id": "src_llm2jev_core_answers_choiceanswer_to_dict",
+      "label": ".to_dict()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".to_dict()",
+      "source_file": "src/llm2jev/core/answers.py",
+      "source_location": "L36"
     },
     {
       "id": "src_llm2jev_core_answers_noulanswer_post_init",
@@ -2544,7 +2280,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": ".__post_init__()",
       "source_file": "src/llm2jev/core/answers.py",
@@ -2556,11 +2292,47 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": ".__post_init__()",
       "source_file": "src/llm2jev/core/answers.py",
       "source_location": "L56"
+    },
+    {
+      "id": "src_llm2jev_core_answers_scoreanswer_to_dict",
+      "label": ".to_dict()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".to_dict()",
+      "source_file": "src/llm2jev/core/answers.py",
+      "source_location": "L84"
+    },
+    {
+      "id": "src_llm2jev_core_response_jevresponse_choices",
+      "label": ".choices()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".choices()",
+      "source_file": "src/llm2jev/core/response.py",
+      "source_location": "L75"
+    },
+    {
+      "id": "src_llm2jev_core_response_jevresponse_scores",
+      "label": ".scores()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".scores()",
+      "source_file": "src/llm2jev/core/response.py",
+      "source_location": "L79"
     },
     {
       "id": "src_llm2jev_utils_probability_copy_probability_distribution",
@@ -2568,7 +2340,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": "copy_probability_distribution()",
       "source_file": "src/llm2jev/utils/probability.py",
@@ -2580,11 +2352,155 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": "validate_probability()",
       "source_file": "src/llm2jev/utils/probability.py",
       "source_location": "L11"
+    },
+    {
+      "id": "tests_test_response_choiceanswertests_test_choice_must_have_highest_probability",
+      "label": ".test_choice_must_have_highest_probability()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_choice_must_have_highest_probability()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L25"
+    },
+    {
+      "id": "tests_test_response_choiceanswertests_test_serializes_choice_answer",
+      "label": ".test_serializes_choice_answer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_serializes_choice_answer()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L8"
+    },
+    {
+      "id": "tests_test_response_jevresponsetests_test_json_rounds_floats_to_two_decimal_places_without_mutating_values",
+      "label": ".test_json_rounds_floats_to_two_decimal_places_without_mutating_values()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_json_rounds_floats_to_two_decimal_places_without_mutating_values()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L123"
+    },
+    {
+      "id": "tests_test_response_jevresponsetests_test_rejects_empty_answers",
+      "label": ".test_rejects_empty_answers()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_rejects_empty_answers()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L133"
+    },
+    {
+      "id": "tests_test_response_jevresponsetests_test_serializes_and_groups_answers",
+      "label": ".test_serializes_and_groups_answers()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_serializes_and_groups_answers()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L94"
+    },
+    {
+      "id": "tests_test_response_noulanswertests_test_rejects_out_of_range_probability",
+      "label": ".test_rejects_out_of_range_probability()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_rejects_out_of_range_probability()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L76"
+    },
+    {
+      "id": "tests_test_response_noulanswertests_test_serializes_noul_answer",
+      "label": ".test_serializes_noul_answer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_serializes_noul_answer()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L70"
+    },
+    {
+      "id": "tests_test_response_probabilityvalidationtests_test_confidence_must_be_in_range",
+      "label": ".test_confidence_must_be_in_range()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_confidence_must_be_in_range()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L143"
+    },
+    {
+      "id": "tests_test_response_probabilityvalidationtests_test_probabilities_must_sum_to_one",
+      "label": ".test_probabilities_must_sum_to_one()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_probabilities_must_sum_to_one()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L139"
+    },
+    {
+      "id": "tests_test_response_scoreanswertests_test_requires_matching_legend_and_probability_levels",
+      "label": ".test_requires_matching_legend_and_probability_levels()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_requires_matching_legend_and_probability_levels()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L50"
+    },
+    {
+      "id": "tests_test_response_scoreanswertests_test_requires_weighted_average_score",
+      "label": ".test_requires_weighted_average_score()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_requires_weighted_average_score()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L59"
+    },
+    {
+      "id": "tests_test_response_scoreanswertests_test_serializes_integer_levels_as_json_keys",
+      "label": ".test_serializes_integer_levels_as_json_keys()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": ".test_serializes_integer_levels_as_json_keys()",
+      "source_file": "tests/test_response.py",
+      "source_location": "L31"
     },
     {
       "id": "tests_test_utils_probabilityutilstests_test_copies_and_validates_distribution",
@@ -2592,7 +2508,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": ".test_copies_and_validates_distribution()",
       "source_file": "tests/test_utils.py",
@@ -2604,7 +2520,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": ".test_rejects_distribution_that_does_not_sum_to_one()",
       "source_file": "tests/test_utils.py",
@@ -2616,7 +2532,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": ".test_rejects_non_finite_and_boolean_probabilities()",
       "source_file": "tests/test_utils.py",
@@ -2628,7 +2544,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": ".test_validates_scalar_and_sequence_probabilities()",
       "source_file": "tests/test_utils.py",
@@ -2707,64 +2623,64 @@
       "source_location": "L26"
     },
     {
-      "id": "src_llm2jev_inference_scoring_scoringstrategy_score",
-      "label": ".score()",
+      "id": "src_llm2jev_core_response_format_json",
+      "label": "_format_json()",
       "_callable": true,
       "_origin": "ast",
-      "community": 22,
-      "community_name": "ScoringStrategy",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
       "file_type": "code",
-      "norm_label": ".score()",
-      "source_file": "src/llm2jev/inference/scoring.py",
-      "source_location": "L18"
-    },
-    {
-      "id": "tests_test_normalization_normalizel1tests_test_normalizes_probabilities",
-      "label": ".test_normalizes_probabilities()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "NormalizeL1Tests",
-      "file_type": "code",
-      "norm_label": ".test_normalizes_probabilities()",
-      "source_file": "tests/test_normalization.py",
-      "source_location": "L8"
-    },
-    {
-      "id": "tests_test_normalization_normalizel1tests_test_rejects_empty_input",
-      "label": ".test_rejects_empty_input()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "NormalizeL1Tests",
-      "file_type": "code",
-      "norm_label": ".test_rejects_empty_input()",
-      "source_file": "tests/test_normalization.py",
-      "source_location": "L14"
-    },
-    {
-      "id": "tests_test_normalization_normalizel1tests_test_rejects_invalid_probabilities",
-      "label": ".test_rejects_invalid_probabilities()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "NormalizeL1Tests",
-      "file_type": "code",
-      "norm_label": ".test_rejects_invalid_probabilities()",
-      "source_file": "tests/test_normalization.py",
-      "source_location": "L18"
-    },
-    {
-      "id": "tests_test_normalization_normalizel1tests_test_returns_uniform_distribution_for_all_zeroes",
-      "label": ".test_returns_uniform_distribution_for_all_zeroes()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "NormalizeL1Tests",
-      "file_type": "code",
-      "norm_label": ".test_returns_uniform_distribution_for_all_zeroes()",
-      "source_file": "tests/test_normalization.py",
+      "norm_label": "_format_json()",
+      "source_file": "src/llm2jev/core/response.py",
       "source_location": "L11"
+    },
+    {
+      "id": "src_llm2jev_core_response_jevresponse_json",
+      "label": ".json()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".json()",
+      "source_file": "src/llm2jev/core/response.py",
+      "source_location": "L87"
+    },
+    {
+      "id": "src_llm2jev_core_response_jevresponse_nouls",
+      "label": ".nouls()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".nouls()",
+      "source_file": "src/llm2jev/core/response.py",
+      "source_location": "L83"
+    },
+    {
+      "id": "src_llm2jev_core_response_jevresponse_post_init",
+      "label": ".__post_init__()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".__post_init__()",
+      "source_file": "src/llm2jev/core/response.py",
+      "source_location": "L59"
+    },
+    {
+      "id": "src_llm2jev_core_response_jevresponse_to_dict",
+      "label": ".to_dict()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".to_dict()",
+      "source_file": "src/llm2jev/core/response.py",
+      "source_location": "L90"
     },
     {
       "id": "src_llm2jev_inference_converter_llm2jev_evaluate",
@@ -2803,16 +2719,112 @@
       "source_location": "L9"
     },
     {
-      "id": "src_llm2jev_utils_probability_validate_probabilities",
-      "label": "validate_probabilities()",
+      "id": "src_llm2jev_inference_scoring_scoringstrategy_score",
+      "label": ".score()",
       "_callable": true,
       "_origin": "ast",
       "community": 28,
       "community_name": "llm2jev/__init__.py",
       "file_type": "code",
-      "norm_label": "validate_probabilities()",
-      "source_file": "src/llm2jev/utils/probability.py",
-      "source_location": "L21"
+      "norm_label": ".score()",
+      "source_file": "src/llm2jev/inference/scoring.py",
+      "source_location": "L18"
+    },
+    {
+      "id": "tests_test_normalization_normalizel1tests_test_normalizes_probabilities",
+      "label": ".test_normalizes_probabilities()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".test_normalizes_probabilities()",
+      "source_file": "tests/test_normalization.py",
+      "source_location": "L8"
+    },
+    {
+      "id": "tests_test_normalization_normalizel1tests_test_rejects_empty_input",
+      "label": ".test_rejects_empty_input()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".test_rejects_empty_input()",
+      "source_file": "tests/test_normalization.py",
+      "source_location": "L14"
+    },
+    {
+      "id": "tests_test_normalization_normalizel1tests_test_rejects_invalid_probabilities",
+      "label": ".test_rejects_invalid_probabilities()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".test_rejects_invalid_probabilities()",
+      "source_file": "tests/test_normalization.py",
+      "source_location": "L18"
+    },
+    {
+      "id": "tests_test_normalization_normalizel1tests_test_returns_uniform_distribution_for_all_zeroes",
+      "label": ".test_returns_uniform_distribution_for_all_zeroes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".test_returns_uniform_distribution_for_all_zeroes()",
+      "source_file": "tests/test_normalization.py",
+      "source_location": "L11"
+    },
+    {
+      "id": "tests_test_scoring_binaryscorertests_test_llm2jev_accepts_strategy_without_binary_backend",
+      "label": ".test_llm2jev_accepts_strategy_without_binary_backend()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".test_llm2jev_accepts_strategy_without_binary_backend()",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L62"
+    },
+    {
+      "id": "tests_test_scoring_binaryscorertests_test_llm2jev_requires_backend_or_strategy",
+      "label": ".test_llm2jev_requires_backend_or_strategy()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".test_llm2jev_requires_backend_or_strategy()",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L75"
+    },
+    {
+      "id": "tests_test_scoring_fixedstrategy_init",
+      "label": ".__init__()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".__init__()",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L31"
+    },
+    {
+      "id": "tests_test_scoring_fixedstrategy_score",
+      "label": ".score()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": ".score()",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L34"
     },
     {
       "id": "src_llm2jev_backend_base_binarybackend_score",
@@ -2899,40 +2911,16 @@
       "source_location": "L62"
     },
     {
-      "id": "src_llm2jev_backend_transformers_backend_transformersbackend_init",
-      "label": ".__init__()",
+      "id": "src_llm2jev_backend_sglang_scoring_score_output",
+      "label": "score_output()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "Usage",
       "file_type": "code",
-      "norm_label": ".__init__()",
-      "source_file": "src/llm2jev/backend/transformers/backend.py",
-      "source_location": "L17"
-    },
-    {
-      "id": "src_llm2jev_backend_transformers_backend_transformersbackend_last_token_positions",
-      "label": "._last_token_positions()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "code",
-      "norm_label": "._last_token_positions()",
-      "source_file": "src/llm2jev/backend/transformers/backend.py",
-      "source_location": "L160"
-    },
-    {
-      "id": "src_llm2jev_backend_transformers_backend_transformersbackend_score",
-      "label": ".score()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "code",
-      "norm_label": ".score()",
-      "source_file": "src/llm2jev/backend/transformers/backend.py",
-      "source_location": "L89"
+      "norm_label": "score_output()",
+      "source_file": "src/llm2jev/backend/sglang/scoring.py",
+      "source_location": "L61"
     },
     {
       "id": "src_llm2jev_core_response_usage_post_init",
@@ -2995,16 +2983,52 @@
       "source_location": "L29"
     },
     {
-      "id": "tests_test_multimodal_imagebackendtests_test_transformers_constructor_loads_image_model_and_processor",
-      "label": ".test_transformers_constructor_loads_image_model_and_processor()",
+      "id": "tests_test_multimodal_imagescoreoutputtests_test_missing_native_fields_and_labels_raise_key_error",
+      "label": ".test_missing_native_fields_and_labels_raise_key_error()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "Usage",
       "file_type": "code",
-      "norm_label": ".test_transformers_constructor_loads_image_model_and_processor()",
+      "norm_label": ".test_missing_native_fields_and_labels_raise_key_error()",
       "source_file": "tests/test_multimodal.py",
-      "source_location": "L215"
+      "source_location": "L349"
+    },
+    {
+      "id": "tests_test_multimodal_imagescoreoutputtests_test_rejects_wrong_positions_count_nonfinite_and_generated_tokens",
+      "label": ".test_rejects_wrong_positions_count_nonfinite_and_generated_tokens()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": ".test_rejects_wrong_positions_count_nonfinite_and_generated_tokens()",
+      "source_file": "tests/test_multimodal.py",
+      "source_location": "L331"
+    },
+    {
+      "id": "tests_test_multimodal_imagescoreoutputtests_test_single_zero_mass_label_is_valid",
+      "label": ".test_single_zero_mass_label_is_valid()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": ".test_single_zero_mass_label_is_valid()",
+      "source_file": "tests/test_multimodal.py",
+      "source_location": "L361"
+    },
+    {
+      "id": "tests_test_multimodal_imagescoreoutputtests_test_uses_next_token_labels_by_id_and_stable_normalization",
+      "label": ".test_uses_next_token_labels_by_id_and_stable_normalization()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": ".test_uses_next_token_labels_by_id_and_stable_normalization()",
+      "source_file": "tests/test_multimodal.py",
+      "source_location": "L324"
     },
     {
       "id": "tests_test_response_usagetests_test_allows_unreported_counts",
@@ -3029,6 +3053,42 @@
       "norm_label": ".test_rejects_negative_counts()",
       "source_file": "tests/test_response.py",
       "source_location": "L88"
+    },
+    {
+      "id": "tests_test_scoring_binaryscorertests_test_scores_existing_binary_path",
+      "label": ".test_scores_existing_binary_path()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": ".test_scores_existing_binary_path()",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L44"
+    },
+    {
+      "id": "tests_test_scoring_fakebackend_init",
+      "label": ".__init__()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": ".__init__()",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L18"
+    },
+    {
+      "id": "tests_test_scoring_fakebackend_score",
+      "label": ".score()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": ".score()",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L22"
     },
     {
       "id": "tests_test_sglang_backend_sglangbackendtests_test_all_submission_allows_disabled_cache",
@@ -3187,16 +3247,28 @@
       "source_location": "L102"
     },
     {
-      "id": "src_llm2jev_backend_sglang_scoring_score_output",
-      "label": "score_output()",
+      "id": "tests_test_sglang_fakes_score_result",
+      "label": "score_result()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
+      "community": 3,
+      "community_name": "Usage",
       "file_type": "code",
-      "norm_label": "score_output()",
-      "source_file": "src/llm2jev/backend/sglang/scoring.py",
-      "source_location": "L61"
+      "norm_label": "score_result()",
+      "source_file": "tests/test_sglang_fakes.py",
+      "source_location": "L35"
+    },
+    {
+      "id": "tests_test_sglang_server_systemoneevaluationtests_test_default_stages_restore_candidate_order_and_sum_usage_generate",
+      "label": "generate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Usage",
+      "file_type": "code",
+      "norm_label": "generate()",
+      "source_file": "tests/test_sglang_server.py",
+      "source_location": "L118"
     },
     {
       "id": "tests_test_converter_binarybackendoutputtests_test_copies_and_validates_probabilities",
@@ -3204,7 +3276,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".test_copies_and_validates_probabilities()",
       "source_file": "tests/test_converter.py",
@@ -3216,7 +3288,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".test_rejects_invalid_usage()",
       "source_file": "tests/test_converter.py",
@@ -3228,7 +3300,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".test_sglang_native_images_all_and_staged_restore_results_and_usage()",
       "source_file": "tests/test_multimodal.py",
@@ -3240,59 +3312,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".test_sglang_staged_failure_stops_remaining_candidates()",
       "source_file": "tests/test_multimodal.py",
       "source_location": "L306"
-    },
-    {
-      "id": "tests_test_multimodal_imagescoreoutputtests_test_missing_native_fields_and_labels_raise_key_error",
-      "label": ".test_missing_native_fields_and_labels_raise_key_error()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
-      "file_type": "code",
-      "norm_label": ".test_missing_native_fields_and_labels_raise_key_error()",
-      "source_file": "tests/test_multimodal.py",
-      "source_location": "L349"
-    },
-    {
-      "id": "tests_test_multimodal_imagescoreoutputtests_test_rejects_wrong_positions_count_nonfinite_and_generated_tokens",
-      "label": ".test_rejects_wrong_positions_count_nonfinite_and_generated_tokens()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
-      "file_type": "code",
-      "norm_label": ".test_rejects_wrong_positions_count_nonfinite_and_generated_tokens()",
-      "source_file": "tests/test_multimodal.py",
-      "source_location": "L331"
-    },
-    {
-      "id": "tests_test_multimodal_imagescoreoutputtests_test_single_zero_mass_label_is_valid",
-      "label": ".test_single_zero_mass_label_is_valid()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
-      "file_type": "code",
-      "norm_label": ".test_single_zero_mass_label_is_valid()",
-      "source_file": "tests/test_multimodal.py",
-      "source_location": "L361"
-    },
-    {
-      "id": "tests_test_multimodal_imagescoreoutputtests_test_uses_next_token_labels_by_id_and_stable_normalization",
-      "label": ".test_uses_next_token_labels_by_id_and_stable_normalization()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
-      "file_type": "code",
-      "norm_label": ".test_uses_next_token_labels_by_id_and_stable_normalization()",
-      "source_file": "tests/test_multimodal.py",
-      "source_location": "L324"
     },
     {
       "id": "tests_test_sglang_backend_sglangbackendtests_setup",
@@ -3300,7 +3324,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".setup()",
       "source_file": "tests/test_sglang_backend.py",
@@ -3312,7 +3336,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".contains_mm_input()",
       "source_file": "tests/test_sglang_fakes.py",
@@ -3324,7 +3348,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "native_modules()",
       "source_file": "tests/test_sglang_fakes.py",
@@ -3336,23 +3360,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "process_content_for_template_format()",
       "source_file": "tests/test_sglang_fakes.py",
       "source_location": "L12"
-    },
-    {
-      "id": "tests_test_sglang_fakes_score_result",
-      "label": "score_result()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
-      "file_type": "code",
-      "norm_label": "score_result()",
-      "source_file": "tests/test_sglang_fakes.py",
-      "source_location": "L35"
     },
     {
       "id": "tests_test_sglang_scoring_scorebatchtests_prepare",
@@ -3360,7 +3372,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".prepare()",
       "source_file": "tests/test_sglang_scoring.py",
@@ -3372,7 +3384,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".setup()",
       "source_file": "tests/test_sglang_scoring.py",
@@ -3384,7 +3396,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".test_native_conversion_preserves_interleaving_and_mixed_candidate_alignment()",
       "source_file": "tests/test_sglang_scoring.py",
@@ -3396,7 +3408,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".test_text_model_rejects_images_before_rendering_or_submission()",
       "source_file": "tests/test_sglang_scoring.py",
@@ -3408,7 +3420,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".test_text_uses_original_tokenizer_even_on_a_vision_model()",
       "source_file": "tests/test_sglang_scoring.py",
@@ -3420,23 +3432,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": ".setup()",
       "source_file": "tests/test_sglang_server.py",
       "source_location": "L69"
-    },
-    {
-      "id": "tests_test_sglang_server_systemoneevaluationtests_test_default_stages_restore_candidate_order_and_sum_usage_generate",
-      "label": "generate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
-      "file_type": "code",
-      "norm_label": "generate()",
-      "source_file": "tests/test_sglang_server.py",
-      "source_location": "L118"
     },
     {
       "id": "src_llm2jev_core_multimodal_is_multimodal",
@@ -4387,17 +4387,6 @@
       "source_location": "L256"
     },
     {
-      "id": "normalizer",
-      "label": "Normalizer",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "JevRequest",
-      "file_type": "code",
-      "norm_label": "normalizer",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "question",
       "label": "Question",
       "_origin": "ast",
@@ -4531,6 +4520,17 @@
       "norm_label": "render a binary question as model-independent chat messages.",
       "source_file": "src/llm2jev/inference/prompt.py",
       "source_location": "L48"
+    },
+    {
+      "id": "normalizer",
+      "label": "Normalizer",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "sglang_server.py",
+      "file_type": "code",
+      "norm_label": "normalizer",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "src_llm2jev_backend_base",
@@ -4742,6 +4742,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_llm2jev_inference_normalization",
+      "label": "normalization.py",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "sglang_server.py",
+      "file_type": "code",
+      "norm_label": "normalization.py",
+      "source_file": "src/llm2jev/inference/normalization.py",
+      "source_location": "L1"
+    },
+    {
       "id": "src_llm2jev_inference_prompt",
       "label": "prompt.py",
       "_origin": "ast",
@@ -4841,6 +4852,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_llm2jev_core_answers_rationale_96",
+      "label": "The probability that the answer is yes or the statement is true.",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "sglang_server.py",
+      "file_type": "rationale",
+      "norm_label": "the probability that the answer is yes or the statement is true.",
+      "source_file": "src/llm2jev/core/answers.py",
+      "source_location": "L96"
+    },
+    {
       "id": "src_llm2jev_core_multimodal_rationale_1",
       "label": "Explicit image evidence inside otherwise arbitrary JSON content.",
       "_origin": "ast",
@@ -4861,6 +4883,17 @@
       "norm_label": "recursively copy json containers while preserving scalar values.",
       "source_file": "src/llm2jev/utils/json.py",
       "source_location": "L31"
+    },
+    {
+      "id": "src_llm2jev_utils_probability_rationale_22",
+      "label": "Validate a non-empty sequence of probabilities.",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "sglang_server.py",
+      "file_type": "rationale",
+      "norm_label": "validate a non-empty sequence of probabilities.",
+      "source_file": "src/llm2jev/utils/probability.py",
+      "source_location": "L22"
     },
     {
       "id": "src_llm2jev_sglang_server_py_any",
@@ -4885,33 +4918,174 @@
       "source_location": "L120"
     },
     {
-      "id": "src_llm2jev_core_answers_rationale_96",
-      "label": "The probability that the answer is yes or the statement is true.",
+      "id": "docs_installation",
+      "label": "installation.md",
       "_origin": "ast",
       "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "rationale",
-      "norm_label": "the probability that the answer is yes or the statement is true.",
-      "source_file": "src/llm2jev/core/answers.py",
-      "source_location": "L96"
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "installation.md",
+      "source_file": "docs/installation.md",
+      "source_location": "L1"
     },
     {
-      "id": "src_llm2jev_core_response_rationale_53",
-      "label": "Answers produced by a model for a Jev request.",
+      "id": "docs_installation_installation",
+      "label": "Installation",
       "_origin": "ast",
       "community": 11,
-      "community_name": "JevResponse",
-      "file_type": "rationale",
-      "norm_label": "answers produced by a model for a jev request.",
-      "source_file": "src/llm2jev/core/response.py",
-      "source_location": "L53"
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "installation",
+      "source_file": "docs/installation.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_multimodal",
+      "label": "multimodal.md",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "multimodal.md",
+      "source_file": "docs/multimodal.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_request_to_model",
+      "label": "request-to-model.md",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "request-to-model.md",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_shared_prefix_benchmarks",
+      "label": "shared-prefix-benchmarks.md",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "shared-prefix-benchmarks.md",
+      "source_file": "docs/shared-prefix-benchmarks.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_shared_prefix_benchmarks_shared_prefixes_performance_benchmarks",
+      "label": "Shared prefixes: performance benchmarks",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "shared prefixes: performance benchmarks",
+      "source_file": "docs/shared-prefix-benchmarks.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_shared_prefix_cache",
+      "label": "shared-prefix-cache.md",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "shared-prefix-cache.md",
+      "source_file": "docs/shared-prefix-cache.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_usage",
+      "label": "usage.md",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "usage.md",
+      "source_file": "docs/usage.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "readme",
+      "label": "README.md",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "readme.md",
+      "source_file": "README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_llm2jev_backend_init",
+      "label": "backend/__init__.py",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "TransformersBackend",
+      "file_type": "code",
+      "norm_label": "backend/__init__.py",
+      "source_file": "src/llm2jev/backend/__init__.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_llm2jev_backend_sglang_init",
+      "label": "sglang/__init__.py",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "TransformersBackend",
+      "file_type": "code",
+      "norm_label": "sglang/__init__.py",
+      "source_file": "src/llm2jev/backend/sglang/__init__.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_llm2jev_backend_transformers_backend_py_any",
+      "label": "Any",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "TransformersBackend",
+      "file_type": "code",
+      "norm_label": "any",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_llm2jev_backend_transformers_backend_py_chatprompt",
+      "label": "ChatPrompt",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "TransformersBackend",
+      "file_type": "code",
+      "norm_label": "chatprompt",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_llm2jev_backend_transformers_backend_py_path",
+      "label": "Path",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "TransformersBackend",
+      "file_type": "code",
+      "norm_label": "path",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "src_llm2jev_backend_transformers_image_inputs_py_any",
       "label": "Any",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": "any",
       "source_file": "",
@@ -4922,18 +5096,29 @@
       "label": "ChatPrompt",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "code",
       "norm_label": "chatprompt",
       "source_file": "",
       "source_location": ""
     },
     {
+      "id": "src_llm2jev_backend_transformers_init",
+      "label": "transformers/__init__.py",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "TransformersBackend",
+      "file_type": "code",
+      "norm_label": "transformers/__init__.py",
+      "source_file": "src/llm2jev/backend/transformers/__init__.py",
+      "source_location": "L1"
+    },
+    {
       "id": "docs_testing",
       "label": "testing.md",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "testing.md",
@@ -4945,7 +5130,7 @@
       "label": "Baseline sandbox-safe run",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "baseline sandbox-safe run",
@@ -4957,7 +5142,7 @@
       "label": "Compile and package-build baseline",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "compile and package-build baseline",
@@ -4969,7 +5154,7 @@
       "label": "Current sandbox-safe command",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "current sandbox-safe command",
@@ -4981,7 +5166,7 @@
       "label": "External experiments when needed",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "external experiments when needed",
@@ -4993,7 +5178,7 @@
       "label": "External real-model integration",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "external real-model integration",
@@ -5005,7 +5190,7 @@
       "label": "Important finding",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "important finding",
@@ -5017,7 +5202,7 @@
       "label": "Inherited suite inventory",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "inherited suite inventory",
@@ -5029,7 +5214,7 @@
       "label": "Sandbox-safe",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "sandbox-safe",
@@ -5041,7 +5226,7 @@
       "label": "Testing environments and inherited-suite inventory",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "testing environments and inherited-suite inventory",
@@ -5053,7 +5238,7 @@
       "label": "Validation classes",
       "_origin": "ast",
       "community": 12,
-      "community_name": "ImageBackendTests",
+      "community_name": "TransformersBackend",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "validation classes",
@@ -5061,37 +5246,219 @@
       "source_location": "L5"
     },
     {
-      "id": "tests_test_response",
-      "label": "test_response.py",
+      "id": "src_llm2jev_backend_transformers_backend_rationale_15",
+      "label": "Prefill-only binary scorer backed by a Transformers causal language model.",
       "_origin": "ast",
-      "community": 13,
-      "community_name": "ChoiceAnswer",
-      "file_type": "code",
-      "norm_label": "test_response.py",
-      "source_file": "tests/test_response.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_llm2jev_core_answers_rationale_15",
-      "label": "A selected choice and the probability of every available choice.",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "ChoiceAnswer",
+      "community": 12,
+      "community_name": "TransformersBackend",
       "file_type": "rationale",
-      "norm_label": "a selected choice and the probability of every available choice.",
-      "source_file": "src/llm2jev/core/answers.py",
+      "norm_label": "prefill-only binary scorer backed by a transformers causal language model.",
+      "source_file": "src/llm2jev/backend/transformers/backend.py",
       "source_location": "L15"
     },
     {
-      "id": "tests_test_scoring",
-      "label": "test_scoring.py",
+      "id": "docs_request_to_model_confidence_is_also_calculated_in_code",
+      "label": "Confidence is also calculated in code",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "confidence is also calculated in code",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L188"
+    },
+    {
+      "id": "docs_request_to_model_from_jev_request_to_llm_request",
+      "label": "From Jev Request to LLM Request",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "from jev request to llm request",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_request_to_model_how_does_an_llm_produce_the_same_json_output",
+      "label": "How does an LLM produce the same JSON output?",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how does an llm produce the same json output?",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L81"
+    },
+    {
+      "id": "docs_request_to_model_llm2jev_first_construct_independent_yes_no_judgments",
+      "label": "LLM2Jev: first construct independent yes/no judgments",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "llm2jev: first construct independent yes/no judgments",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L105"
+    },
+    {
+      "id": "docs_request_to_model_more_input_tokens_could_this_make_inference_slower",
+      "label": "More input tokens: could this make inference slower?",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "more input tokens: could this make inference slower?",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L202"
+    },
+    {
+      "id": "docs_request_to_model_then_calculate_probabilities_from_yes_no_logits",
+      "label": "Then calculate probabilities from yes/no logits",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "then calculate probabilities from yes/no logits",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L148"
+    },
+    {
+      "id": "docs_request_to_model_turning_candidate_scores_into_final_answers",
+      "label": "Turning candidate scores into final answers",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "turning candidate scores into final answers",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L171"
+    },
+    {
+      "id": "docs_request_to_model_what_does_a_yes_no_input_look_like",
+      "label": "What does a yes/no input look like?",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what does a yes/no input look like?",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L123"
+    },
+    {
+      "id": "docs_request_to_model_why_judge_each_option_independently",
+      "label": "Why judge each option independently?",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "From Jev Request to LLM Request",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "why judge each option independently?",
+      "source_file": "docs/request-to-model.md",
+      "source_location": "L109"
+    },
+    {
+      "id": "demos_pick_place_readme",
+      "label": "pick_place/README.md",
       "_origin": "ast",
       "community": 14,
-      "community_name": ".test_scores_existing_binary_path",
-      "file_type": "code",
-      "norm_label": "test_scoring.py",
-      "source_file": "tests/test_scoring.py",
+      "community_name": "LLM2Jev Pick & Place Arm Demo",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "pick_place/readme.md",
+      "source_file": "demos/pick_place/README.md",
       "source_location": "L1"
+    },
+    {
+      "id": "demos_pick_place_readme_attribution",
+      "label": "Attribution",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "LLM2Jev Pick & Place Arm Demo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "attribution",
+      "source_file": "demos/pick_place/README.md",
+      "source_location": "L62"
+    },
+    {
+      "id": "demos_pick_place_readme_demo_video",
+      "label": "Demo video",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "LLM2Jev Pick & Place Arm Demo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "demo video",
+      "source_file": "demos/pick_place/README.md",
+      "source_location": "L13"
+    },
+    {
+      "id": "demos_pick_place_readme_dependencies",
+      "label": "Dependencies",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "LLM2Jev Pick & Place Arm Demo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "dependencies",
+      "source_file": "demos/pick_place/README.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "demos_pick_place_readme_fetch_the_panda_assets",
+      "label": "Fetch the Panda assets",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "LLM2Jev Pick & Place Arm Demo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "fetch the panda assets",
+      "source_file": "demos/pick_place/README.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "demos_pick_place_readme_llm2jev_pick_place_arm_demo",
+      "label": "LLM2Jev Pick & Place Arm Demo",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "LLM2Jev Pick & Place Arm Demo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "llm2jev pick & place arm demo",
+      "source_file": "demos/pick_place/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "demos_pick_place_readme_run_the_mujoco_version",
+      "label": "Run the MuJoCo version",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "LLM2Jev Pick & Place Arm Demo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "run the mujoco version",
+      "source_file": "demos/pick_place/README.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "demos_pick_place_readme_start_the_local_service",
+      "label": "Start the local service",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "LLM2Jev Pick & Place Arm Demo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "start the local service",
+      "source_file": "demos/pick_place/README.md",
+      "source_location": "L36"
     },
     {
       "id": "src_llm2jev_utils_init",
@@ -5163,7 +5530,7 @@
       "node_kind": "heading",
       "norm_label": "change protocol",
       "source_file": "docs/research-design.md",
-      "source_location": "L190"
+      "source_location": "L192"
     },
     {
       "id": "docs_research_design_d001_fork_llm2jev_as_the_application_base",
@@ -5190,18 +5557,6 @@
       "source_location": "L61"
     },
     {
-      "id": "docs_research_design_d003_separate_scoring_strategy_from_inference_backend",
-      "label": "D003 \u2014 Separate scoring strategy from inference backend",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Decisions",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "d003 \u2014 separate scoring strategy from inference backend",
-      "source_file": "docs/research-design.md",
-      "source_location": "L66"
-    },
-    {
       "id": "docs_research_design_d004_add_llama_cpp_gguf_as_the_first_new_backend",
       "label": "D004 \u2014 Add llama.cpp/GGUF as the first new backend",
       "_origin": "ast",
@@ -5211,7 +5566,7 @@
       "node_kind": "heading",
       "norm_label": "d004 \u2014 add llama.cpp/gguf as the first new backend",
       "source_file": "docs/research-design.md",
-      "source_location": "L76"
+      "source_location": "L78"
     },
     {
       "id": "docs_research_design_d005_full_candidate_continuation_likelihood_is_an_experimental_scoring_strategy",
@@ -5223,7 +5578,7 @@
       "node_kind": "heading",
       "norm_label": "d005 \u2014 full candidate continuation likelihood is an experimental scoring strategy",
       "source_file": "docs/research-design.md",
-      "source_location": "L83"
+      "source_location": "L85"
     },
     {
       "id": "docs_research_design_d006_preserve_independent_binary_scoring_as_baseline",
@@ -5235,7 +5590,7 @@
       "node_kind": "heading",
       "norm_label": "d006 \u2014 preserve independent binary scoring as baseline",
       "source_file": "docs/research-design.md",
-      "source_location": "L94"
+      "source_location": "L96"
     },
     {
       "id": "docs_research_design_d007_benchmark_before_choosing_a_preferred_scorer_model",
@@ -5247,7 +5602,7 @@
       "node_kind": "heading",
       "norm_label": "d007 \u2014 benchmark before choosing a preferred scorer/model",
       "source_file": "docs/research-design.md",
-      "source_location": "L99"
+      "source_location": "L101"
     },
     {
       "id": "docs_research_design_d008_split_testing_by_execution_environment",
@@ -5259,7 +5614,7 @@
       "node_kind": "heading",
       "norm_label": "d008 \u2014 split testing by execution environment",
       "source_file": "docs/research-design.md",
-      "source_location": "L104"
+      "source_location": "L106"
     },
     {
       "id": "docs_research_design_d009_optimize_for_research_velocity_not_production_hardening",
@@ -5271,7 +5626,7 @@
       "node_kind": "heading",
       "norm_label": "d009 \u2014 optimize for research velocity, not production hardening",
       "source_file": "docs/research-design.md",
-      "source_location": "L118"
+      "source_location": "L120"
     },
     {
       "id": "docs_research_design_decision_template",
@@ -5283,7 +5638,7 @@
       "node_kind": "heading",
       "norm_label": "decision template",
       "source_file": "docs/research-design.md",
-      "source_location": "L202"
+      "source_location": "L204"
     },
     {
       "id": "docs_research_design_decisions",
@@ -5319,7 +5674,7 @@
       "node_kind": "heading",
       "norm_label": "implementation phases",
       "source_file": "docs/research-design.md",
-      "source_location": "L158"
+      "source_location": "L160"
     },
     {
       "id": "docs_research_design_metrics",
@@ -5331,7 +5686,7 @@
       "node_kind": "heading",
       "norm_label": "metrics",
       "source_file": "docs/research-design.md",
-      "source_location": "L137"
+      "source_location": "L139"
     },
     {
       "id": "docs_research_design_open_design_questions",
@@ -5343,7 +5698,7 @@
       "node_kind": "heading",
       "norm_label": "open design questions",
       "source_file": "docs/research-design.md",
-      "source_location": "L221"
+      "source_location": "L223"
     },
     {
       "id": "docs_research_design_phase_0_repository_baseline",
@@ -5355,19 +5710,7 @@
       "node_kind": "heading",
       "norm_label": "phase 0 \u2014 repository baseline",
       "source_file": "docs/research-design.md",
-      "source_location": "L162"
-    },
-    {
-      "id": "docs_research_design_phase_1_scoring_abstraction",
-      "label": "Phase 1 \u2014 Scoring abstraction",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Decisions",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "phase 1 \u2014 scoring abstraction",
-      "source_file": "docs/research-design.md",
-      "source_location": "L166"
+      "source_location": "L164"
     },
     {
       "id": "docs_research_design_phase_2_llama_cpp_backend",
@@ -5379,7 +5722,7 @@
       "node_kind": "heading",
       "norm_label": "phase 2 \u2014 llama.cpp backend",
       "source_file": "docs/research-design.md",
-      "source_location": "L170"
+      "source_location": "L172"
     },
     {
       "id": "docs_research_design_phase_3_continuation_scorer",
@@ -5391,7 +5734,7 @@
       "node_kind": "heading",
       "norm_label": "phase 3 \u2014 continuation scorer",
       "source_file": "docs/research-design.md",
-      "source_location": "L174"
+      "source_location": "L176"
     },
     {
       "id": "docs_research_design_phase_4_bitnet",
@@ -5403,7 +5746,7 @@
       "node_kind": "heading",
       "norm_label": "phase 4 \u2014 bitnet",
       "source_file": "docs/research-design.md",
-      "source_location": "L178"
+      "source_location": "L180"
     },
     {
       "id": "docs_research_design_phase_5_comparative_evaluation",
@@ -5415,7 +5758,7 @@
       "node_kind": "heading",
       "norm_label": "phase 5 \u2014 comparative evaluation",
       "source_file": "docs/research-design.md",
-      "source_location": "L182"
+      "source_location": "L184"
     },
     {
       "id": "docs_research_design_phase_6_experimental_backends",
@@ -5427,7 +5770,7 @@
       "node_kind": "heading",
       "norm_label": "phase 6 \u2014 experimental backends",
       "source_file": "docs/research-design.md",
-      "source_location": "L186"
+      "source_location": "L188"
     },
     {
       "id": "docs_research_design_reference_implementations_and_inspiration",
@@ -5454,15 +5797,88 @@
       "source_location": "L1"
     },
     {
-      "id": "src_llm2jev_core_answers_rationale_47",
-      "label": "A probability-weighted score and its ordered rubric.",
+      "id": "docs_multimodal_building_a_request",
+      "label": "Building a request",
       "_origin": "ast",
       "community": 18,
-      "community_name": "ScoreAnswer",
-      "file_type": "rationale",
-      "norm_label": "a probability-weighted score and its ordered rubric.",
-      "source_file": "src/llm2jev/core/answers.py",
-      "source_location": "L47"
+      "community_name": "Using multimodal data",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "building a request",
+      "source_file": "docs/multimodal.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "docs_multimodal_choosing_where_to_place_images",
+      "label": "Choosing where to place images",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Using multimodal data",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "choosing where to place images",
+      "source_file": "docs/multimodal.md",
+      "source_location": "L131"
+    },
+    {
+      "id": "docs_multimodal_http_api_calls",
+      "label": "HTTP API calls",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Using multimodal data",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "http api calls",
+      "source_file": "docs/multimodal.md",
+      "source_location": "L98"
+    },
+    {
+      "id": "docs_multimodal_sglang_backend",
+      "label": "SGLang backend",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Using multimodal data",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "sglang backend",
+      "source_file": "docs/multimodal.md",
+      "source_location": "L75"
+    },
+    {
+      "id": "docs_multimodal_supported_image_sources",
+      "label": "Supported image sources",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Using multimodal data",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "supported image sources",
+      "source_file": "docs/multimodal.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "docs_multimodal_transformers_backend",
+      "label": "Transformers backend",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Using multimodal data",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "transformers backend",
+      "source_file": "docs/multimodal.md",
+      "source_location": "L86"
+    },
+    {
+      "id": "docs_multimodal_using_multimodal_data",
+      "label": "Using multimodal data",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Using multimodal data",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "using multimodal data",
+      "source_file": "docs/multimodal.md",
+      "source_location": "L1"
     },
     {
       "id": "agents",
@@ -5499,6 +5915,18 @@
       "norm_label": "build, test, and development commands",
       "source_file": "AGENTS.md",
       "source_location": "L85"
+    },
+    {
+      "id": "agents_coding_style_naming_conventions",
+      "label": "Coding Style & Naming Conventions",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Repository Guidelines",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "coding style & naming conventions",
+      "source_file": "AGENTS.md",
+      "source_location": "L95"
     },
     {
       "id": "agents_commit_pull_request_guidelines",
@@ -5625,18 +6053,51 @@
       "label": "K",
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "code",
       "norm_label": "k",
       "source_file": "",
       "source_location": ""
     },
     {
+      "id": "tests_test_response",
+      "label": "test_response.py",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "code",
+      "norm_label": "test_response.py",
+      "source_file": "tests/test_response.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_llm2jev_core_answers_rationale_15",
+      "label": "A selected choice and the probability of every available choice.",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "rationale",
+      "norm_label": "a selected choice and the probability of every available choice.",
+      "source_file": "src/llm2jev/core/answers.py",
+      "source_location": "L15"
+    },
+    {
+      "id": "src_llm2jev_core_answers_rationale_47",
+      "label": "A probability-weighted score and its ordered rubric.",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ChoiceAnswer",
+      "file_type": "rationale",
+      "norm_label": "a probability-weighted score and its ordered rubric.",
+      "source_file": "src/llm2jev/core/answers.py",
+      "source_location": "L47"
+    },
+    {
       "id": "src_llm2jev_utils_probability_rationale_12",
       "label": "Validate and return one finite probability.",
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "rationale",
       "norm_label": "validate and return one finite probability.",
       "source_file": "src/llm2jev/utils/probability.py",
@@ -5647,467 +6108,11 @@
       "label": "Copy and validate a non-empty probability distribution.",
       "_origin": "ast",
       "community": 2,
-      "community_name": "validate_probability",
+      "community_name": "ChoiceAnswer",
       "file_type": "rationale",
       "norm_label": "copy and validate a non-empty probability distribution.",
       "source_file": "src/llm2jev/utils/probability.py",
       "source_location": "L33"
-    },
-    {
-      "id": "demos_pick_place_readme",
-      "label": "pick_place/README.md",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "pick_place/readme.md",
-      "source_file": "demos/pick_place/README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "demos_pick_place_readme_attribution",
-      "label": "Attribution",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "attribution",
-      "source_file": "demos/pick_place/README.md",
-      "source_location": "L62"
-    },
-    {
-      "id": "demos_pick_place_readme_demo_video",
-      "label": "Demo video",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "demo video",
-      "source_file": "demos/pick_place/README.md",
-      "source_location": "L13"
-    },
-    {
-      "id": "demos_pick_place_readme_dependencies",
-      "label": "Dependencies",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "dependencies",
-      "source_file": "demos/pick_place/README.md",
-      "source_location": "L18"
-    },
-    {
-      "id": "demos_pick_place_readme_fetch_the_panda_assets",
-      "label": "Fetch the Panda assets",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "fetch the panda assets",
-      "source_file": "demos/pick_place/README.md",
-      "source_location": "L26"
-    },
-    {
-      "id": "demos_pick_place_readme_llm2jev_pick_place_arm_demo",
-      "label": "LLM2Jev Pick & Place Arm Demo",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "llm2jev pick & place arm demo",
-      "source_file": "demos/pick_place/README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "demos_pick_place_readme_run_the_mujoco_version",
-      "label": "Run the MuJoCo version",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "run the mujoco version",
-      "source_file": "demos/pick_place/README.md",
-      "source_location": "L48"
-    },
-    {
-      "id": "demos_pick_place_readme_start_the_local_service",
-      "label": "Start the local service",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "start the local service",
-      "source_file": "demos/pick_place/README.md",
-      "source_location": "L36"
-    },
-    {
-      "id": "docs_installation",
-      "label": "installation.md",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "installation.md",
-      "source_file": "docs/installation.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_installation_installation",
-      "label": "Installation",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "installation",
-      "source_file": "docs/installation.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_multimodal",
-      "label": "multimodal.md",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "multimodal.md",
-      "source_file": "docs/multimodal.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_multimodal_building_a_request",
-      "label": "Building a request",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "building a request",
-      "source_file": "docs/multimodal.md",
-      "source_location": "L18"
-    },
-    {
-      "id": "docs_multimodal_choosing_where_to_place_images",
-      "label": "Choosing where to place images",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "choosing where to place images",
-      "source_file": "docs/multimodal.md",
-      "source_location": "L131"
-    },
-    {
-      "id": "docs_multimodal_http_api_calls",
-      "label": "HTTP API calls",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "http api calls",
-      "source_file": "docs/multimodal.md",
-      "source_location": "L98"
-    },
-    {
-      "id": "docs_multimodal_sglang_backend",
-      "label": "SGLang backend",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "sglang backend",
-      "source_file": "docs/multimodal.md",
-      "source_location": "L75"
-    },
-    {
-      "id": "docs_multimodal_supported_image_sources",
-      "label": "Supported image sources",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "supported image sources",
-      "source_file": "docs/multimodal.md",
-      "source_location": "L7"
-    },
-    {
-      "id": "docs_multimodal_transformers_backend",
-      "label": "Transformers backend",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "transformers backend",
-      "source_file": "docs/multimodal.md",
-      "source_location": "L86"
-    },
-    {
-      "id": "docs_multimodal_using_multimodal_data",
-      "label": "Using multimodal data",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "using multimodal data",
-      "source_file": "docs/multimodal.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_request_to_model",
-      "label": "request-to-model.md",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "request-to-model.md",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_request_to_model_confidence_is_also_calculated_in_code",
-      "label": "Confidence is also calculated in code",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "confidence is also calculated in code",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L188"
-    },
-    {
-      "id": "docs_request_to_model_from_jev_request_to_llm_request",
-      "label": "From Jev Request to LLM Request",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "from jev request to llm request",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_request_to_model_how_does_an_llm_produce_the_same_json_output",
-      "label": "How does an LLM produce the same JSON output?",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how does an llm produce the same json output?",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L81"
-    },
-    {
-      "id": "docs_request_to_model_llm2jev_first_construct_independent_yes_no_judgments",
-      "label": "LLM2Jev: first construct independent yes/no judgments",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "llm2jev: first construct independent yes/no judgments",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L105"
-    },
-    {
-      "id": "docs_request_to_model_more_input_tokens_could_this_make_inference_slower",
-      "label": "More input tokens: could this make inference slower?",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "more input tokens: could this make inference slower?",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L202"
-    },
-    {
-      "id": "docs_request_to_model_then_calculate_probabilities_from_yes_no_logits",
-      "label": "Then calculate probabilities from yes/no logits",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "then calculate probabilities from yes/no logits",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L148"
-    },
-    {
-      "id": "docs_request_to_model_turning_candidate_scores_into_final_answers",
-      "label": "Turning candidate scores into final answers",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "turning candidate scores into final answers",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L171"
-    },
-    {
-      "id": "docs_request_to_model_what_does_a_yes_no_input_look_like",
-      "label": "What does a yes/no input look like?",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what does a yes/no input look like?",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L123"
-    },
-    {
-      "id": "docs_request_to_model_why_judge_each_option_independently",
-      "label": "Why judge each option independently?",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "why judge each option independently?",
-      "source_file": "docs/request-to-model.md",
-      "source_location": "L109"
-    },
-    {
-      "id": "docs_shared_prefix_benchmarks",
-      "label": "shared-prefix-benchmarks.md",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "shared-prefix-benchmarks.md",
-      "source_file": "docs/shared-prefix-benchmarks.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_shared_prefix_benchmarks_shared_prefixes_performance_benchmarks",
-      "label": "Shared prefixes: performance benchmarks",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "shared prefixes: performance benchmarks",
-      "source_file": "docs/shared-prefix-benchmarks.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_shared_prefix_cache",
-      "label": "shared-prefix-cache.md",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "shared-prefix-cache.md",
-      "source_file": "docs/shared-prefix-cache.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_usage",
-      "label": "usage.md",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "usage.md",
-      "source_file": "docs/usage.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_usage_choosing_a_mode",
-      "label": "Choosing a mode",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "choosing a mode",
-      "source_file": "docs/usage.md",
-      "source_location": "L131"
-    },
-    {
-      "id": "docs_usage_sglang_python_api",
-      "label": "SGLang Python API",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "sglang python api",
-      "source_file": "docs/usage.md",
-      "source_location": "L7"
-    },
-    {
-      "id": "docs_usage_system_one_http_api",
-      "label": "System One HTTP API",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "system one http api",
-      "source_file": "docs/usage.md",
-      "source_location": "L80"
-    },
-    {
-      "id": "docs_usage_transformers_backend",
-      "label": "Transformers Backend",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "transformers backend",
-      "source_file": "docs/usage.md",
-      "source_location": "L60"
-    },
-    {
-      "id": "docs_usage_usage_guide",
-      "label": "Usage guide",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "usage guide",
-      "source_file": "docs/usage.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "readme",
-      "label": "README.md",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "\ud83e\udde0 LLM2Jev Research: Model-Agnostic Jev-Style Decision Inference",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "readme.md",
-      "source_file": "README.md",
-      "source_location": "L1"
     },
     {
       "id": "readme_current_llm2jev_baseline",
@@ -6119,7 +6124,7 @@
       "node_kind": "heading",
       "norm_label": "\u2705 current llm2jev baseline",
       "source_file": "README.md",
-      "source_location": "L37"
+      "source_location": "L39"
     },
     {
       "id": "readme_demos",
@@ -6131,7 +6136,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83c\udfae demos",
       "source_file": "README.md",
-      "source_location": "L95"
+      "source_location": "L97"
     },
     {
       "id": "readme_existing_baseline_benchmarks",
@@ -6143,7 +6148,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udcca existing baseline benchmarks",
       "source_file": "README.md",
-      "source_location": "L112"
+      "source_location": "L114"
     },
     {
       "id": "readme_getting_started",
@@ -6155,7 +6160,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udcd6 getting started",
       "source_file": "README.md",
-      "source_location": "L83"
+      "source_location": "L85"
     },
     {
       "id": "readme_installation",
@@ -6167,7 +6172,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udce6 installation",
       "source_file": "README.md",
-      "source_location": "L79"
+      "source_location": "L81"
     },
     {
       "id": "readme_license",
@@ -6179,7 +6184,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udcc4 license",
       "source_file": "README.md",
-      "source_location": "L136"
+      "source_location": "L138"
     },
     {
       "id": "readme_llm2jev_research_model_agnostic_jev_style_decision_inference",
@@ -6203,7 +6208,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\ude80 quick start",
       "source_file": "README.md",
-      "source_location": "L62"
+      "source_location": "L64"
     },
     {
       "id": "readme_research_roadmap",
@@ -6215,7 +6220,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\uddfa\ufe0f research roadmap",
       "source_file": "README.md",
-      "source_location": "L116"
+      "source_location": "L118"
     },
     {
       "id": "readme_tests",
@@ -6227,7 +6232,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83e\uddea tests",
       "source_file": "README.md",
-      "source_location": "L130"
+      "source_location": "L132"
     },
     {
       "id": "readme_upstream_baseline_news",
@@ -6239,7 +6244,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udcf0 upstream baseline news",
       "source_file": "README.md",
-      "source_location": "L54"
+      "source_location": "L56"
     },
     {
       "id": "tests_test_transformers_backend",
@@ -6253,61 +6258,112 @@
       "source_location": "L1"
     },
     {
-      "id": "src_llm2jev_inference_scoring_py_protocol",
-      "label": "Protocol",
+      "id": "docs_usage_choosing_a_mode",
+      "label": "Choosing a mode",
       "_origin": "ast",
       "community": 22,
-      "community_name": "ScoringStrategy",
-      "file_type": "code",
-      "norm_label": "protocol",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "agents_coding_style_naming_conventions",
-      "label": "Coding Style & Naming Conventions",
-      "_origin": "ast",
-      "community": 22,
-      "community_name": "ScoringStrategy",
+      "community_name": "Usage guide",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "coding style & naming conventions",
-      "source_file": "AGENTS.md",
-      "source_location": "L95"
+      "norm_label": "choosing a mode",
+      "source_file": "docs/usage.md",
+      "source_location": "L131"
     },
     {
-      "id": "readme_research_fork",
-      "label": "\ud83d\udd2c Research Fork",
+      "id": "docs_usage_sglang_python_api",
+      "label": "SGLang Python API",
       "_origin": "ast",
       "community": 22,
-      "community_name": "ScoringStrategy",
+      "community_name": "Usage guide",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "\ud83d\udd2c research fork",
-      "source_file": "README.md",
-      "source_location": "L20"
+      "norm_label": "sglang python api",
+      "source_file": "docs/usage.md",
+      "source_location": "L7"
     },
     {
-      "id": "src_llm2jev_inference_scoring_rationale_16",
-      "label": "Turn a Jev request into a scored Jev response.",
+      "id": "docs_usage_system_one_http_api",
+      "label": "System One HTTP API",
       "_origin": "ast",
       "community": 22,
-      "community_name": "ScoringStrategy",
-      "file_type": "rationale",
-      "norm_label": "turn a jev request into a scored jev response.",
-      "source_file": "src/llm2jev/inference/scoring.py",
-      "source_location": "L16"
+      "community_name": "Usage guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "system one http api",
+      "source_file": "docs/usage.md",
+      "source_location": "L80"
     },
     {
-      "id": "tests_test_normalization",
-      "label": "test_normalization.py",
+      "id": "docs_usage_transformers_backend",
+      "label": "Transformers Backend",
       "_origin": "ast",
-      "community": 27,
-      "community_name": "NormalizeL1Tests",
-      "file_type": "code",
-      "norm_label": "test_normalization.py",
-      "source_file": "tests/test_normalization.py",
+      "community": 22,
+      "community_name": "Usage guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "transformers backend",
+      "source_file": "docs/usage.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "docs_usage_usage_guide",
+      "label": "Usage guide",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "Usage guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "usage guide",
+      "source_file": "docs/usage.md",
       "source_location": "L1"
+    },
+    {
+      "id": "docs_shared_prefix_cache_how_does_staging_help_the_first_request",
+      "label": "How does staging help the first request?",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Shared prefixes: reuse context across multiple decisions",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how does staging help the first request?",
+      "source_file": "docs/shared-prefix-cache.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "docs_shared_prefix_cache_outputs_and_cache_behavior",
+      "label": "Outputs and cache behavior",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Shared prefixes: reuse context across multiple decisions",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "outputs and cache behavior",
+      "source_file": "docs/shared-prefix-cache.md",
+      "source_location": "L55"
+    },
+    {
+      "id": "docs_shared_prefix_cache_shared_prefixes_reuse_context_across_multiple_decisions",
+      "label": "Shared prefixes: reuse context across multiple decisions",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Shared prefixes: reuse context across multiple decisions",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "shared prefixes: reuse context across multiple decisions",
+      "source_file": "docs/shared-prefix-cache.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_shared_prefix_cache_why_is_the_same_context_processed_more_than_once",
+      "label": "Why is the same context processed more than once?",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Shared prefixes: reuse context across multiple decisions",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "why is the same context processed more than once?",
+      "source_file": "docs/shared-prefix-cache.md",
+      "source_location": "L11"
     },
     {
       "id": "src_llm2jev_backend_base_py_protocol",
@@ -6343,17 +6399,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_llm2jev_inference_normalization",
-      "label": "normalization.py",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "llm2jev/__init__.py",
-      "file_type": "code",
-      "norm_label": "normalization.py",
-      "source_file": "src/llm2jev/inference/normalization.py",
-      "source_location": "L1"
-    },
-    {
       "id": "src_llm2jev_inference_prompt_py_protocol",
       "label": "Protocol",
       "_origin": "ast",
@@ -6376,6 +6421,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_llm2jev_inference_scoring_py_protocol",
+      "label": "Protocol",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": "protocol",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "src_llm2jev_init",
       "label": "llm2jev/__init__.py",
       "_origin": "ast",
@@ -6387,6 +6443,53 @@
       "source_location": "L1"
     },
     {
+      "id": "tests_test_scoring",
+      "label": "test_scoring.py",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "code",
+      "norm_label": "test_scoring.py",
+      "source_file": "tests/test_scoring.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_research_design_d003_separate_scoring_strategy_from_inference_backend",
+      "label": "D003 \u2014 Separate scoring strategy from inference backend",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "d003 \u2014 separate scoring strategy from inference backend",
+      "source_file": "docs/research-design.md",
+      "source_location": "L66"
+    },
+    {
+      "id": "docs_research_design_phase_1_scoring_abstraction",
+      "label": "Phase 1 \u2014 Scoring abstraction",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase 1 \u2014 scoring abstraction",
+      "source_file": "docs/research-design.md",
+      "source_location": "L168"
+    },
+    {
+      "id": "readme_research_fork",
+      "label": "\ud83d\udd2c Research Fork",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\ud83d\udd2c research fork",
+      "source_file": "README.md",
+      "source_location": "L20"
+    },
+    {
       "id": "src_llm2jev_backend_base_rationale_29",
       "label": "Batch scorer that returns one P(yes) for each rendered prompt.",
       "_origin": "ast",
@@ -6396,6 +6499,17 @@
       "norm_label": "batch scorer that returns one p(yes) for each rendered prompt.",
       "source_file": "src/llm2jev/backend/base.py",
       "source_location": "L29"
+    },
+    {
+      "id": "src_llm2jev_core_response_rationale_53",
+      "label": "Answers produced by a model for a Jev request.",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "rationale",
+      "norm_label": "answers produced by a model for a jev request.",
+      "source_file": "src/llm2jev/core/response.py",
+      "source_location": "L53"
     },
     {
       "id": "src_llm2jev_inference_converter_rationale_16",
@@ -6420,6 +6534,17 @@
       "source_location": "L10"
     },
     {
+      "id": "src_llm2jev_inference_scoring_rationale_16",
+      "label": "Turn a Jev request into a scored Jev response.",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "llm2jev/__init__.py",
+      "file_type": "rationale",
+      "norm_label": "turn a jev request into a scored jev response.",
+      "source_file": "src/llm2jev/inference/scoring.py",
+      "source_location": "L16"
+    },
+    {
       "id": "src_llm2jev_inference_scoring_rationale_24",
       "label": "Existing independent yes/no scoring strategy.",
       "_origin": "ast",
@@ -6431,17 +6556,6 @@
       "source_location": "L24"
     },
     {
-      "id": "src_llm2jev_utils_probability_rationale_22",
-      "label": "Validate a non-empty sequence of probabilities.",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "llm2jev/__init__.py",
-      "file_type": "rationale",
-      "norm_label": "validate a non-empty sequence of probabilities.",
-      "source_file": "src/llm2jev/utils/probability.py",
-      "source_location": "L22"
-    },
-    {
       "id": "src_llm2jev_backend_base_py_chatprompt",
       "label": "ChatPrompt",
       "_origin": "ast",
@@ -6451,17 +6565,6 @@
       "norm_label": "chatprompt",
       "source_file": "",
       "source_location": ""
-    },
-    {
-      "id": "src_llm2jev_backend_init",
-      "label": "backend/__init__.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "code",
-      "norm_label": "backend/__init__.py",
-      "source_file": "src/llm2jev/backend/__init__.py",
-      "source_location": "L1"
     },
     {
       "id": "src_llm2jev_backend_sglang_backend_py_any",
@@ -6497,18 +6600,7 @@
       "source_location": ""
     },
     {
-      "id": "src_llm2jev_backend_sglang_init",
-      "label": "sglang/__init__.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "code",
-      "norm_label": "sglang/__init__.py",
-      "source_file": "src/llm2jev/backend/sglang/__init__.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_llm2jev_backend_transformers_backend_py_any",
+      "id": "src_llm2jev_backend_sglang_scoring_py_any",
       "label": "Any",
       "_origin": "ast",
       "community": 3,
@@ -6517,39 +6609,6 @@
       "norm_label": "any",
       "source_file": "",
       "source_location": ""
-    },
-    {
-      "id": "src_llm2jev_backend_transformers_backend_py_chatprompt",
-      "label": "ChatPrompt",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "code",
-      "norm_label": "chatprompt",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "src_llm2jev_backend_transformers_backend_py_path",
-      "label": "Path",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "code",
-      "norm_label": "path",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "src_llm2jev_backend_transformers_init",
-      "label": "transformers/__init__.py",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "code",
-      "norm_label": "transformers/__init__.py",
-      "source_file": "src/llm2jev/backend/transformers/__init__.py",
-      "source_location": "L1"
     },
     {
       "id": "tests_test_converter_py_chatprompt",
@@ -6561,54 +6620,6 @@
       "norm_label": "chatprompt",
       "source_file": "",
       "source_location": ""
-    },
-    {
-      "id": "docs_shared_prefix_cache_how_does_staging_help_the_first_request",
-      "label": "How does staging help the first request?",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how does staging help the first request?",
-      "source_file": "docs/shared-prefix-cache.md",
-      "source_location": "L33"
-    },
-    {
-      "id": "docs_shared_prefix_cache_outputs_and_cache_behavior",
-      "label": "Outputs and cache behavior",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "outputs and cache behavior",
-      "source_file": "docs/shared-prefix-cache.md",
-      "source_location": "L55"
-    },
-    {
-      "id": "docs_shared_prefix_cache_shared_prefixes_reuse_context_across_multiple_decisions",
-      "label": "Shared prefixes: reuse context across multiple decisions",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "shared prefixes: reuse context across multiple decisions",
-      "source_file": "docs/shared-prefix-cache.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_shared_prefix_cache_why_is_the_same_context_processed_more_than_once",
-      "label": "Why is the same context processed more than once?",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "why is the same context processed more than once?",
-      "source_file": "docs/shared-prefix-cache.md",
-      "source_location": "L11"
     },
     {
       "id": "src_llm2jev_backend_base_rationale_16",
@@ -6655,17 +6666,6 @@
       "source_location": "L98"
     },
     {
-      "id": "src_llm2jev_backend_transformers_backend_rationale_15",
-      "label": "Prefill-only binary scorer backed by a Transformers causal language model.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Usage",
-      "file_type": "rationale",
-      "norm_label": "prefill-only binary scorer backed by a transformers causal language model.",
-      "source_file": "src/llm2jev/backend/transformers/backend.py",
-      "source_location": "L15"
-    },
-    {
       "id": "src_llm2jev_core_response_rationale_34",
       "label": "Input and output token counts, when reported by the model backend.",
       "_origin": "ast",
@@ -6681,20 +6681,9 @@
       "label": "SimpleNamespace",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "simplenamespace",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "src_llm2jev_backend_sglang_scoring_py_any",
-      "label": "Any",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "score_result",
-      "file_type": "code",
-      "norm_label": "any",
       "source_file": "",
       "source_location": ""
     },
@@ -6703,7 +6692,7 @@
       "label": "test_assembler.py",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "test_assembler.py",
       "source_file": "tests/test_assembler.py",
@@ -6714,10 +6703,21 @@
       "label": "test_converter.py",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "test_converter.py",
       "source_file": "tests/test_converter.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_test_normalization",
+      "label": "test_normalization.py",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "unittest",
+      "file_type": "code",
+      "norm_label": "test_normalization.py",
+      "source_file": "tests/test_normalization.py",
       "source_location": "L1"
     },
     {
@@ -6725,7 +6725,7 @@
       "label": "test_request.py",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "test_request.py",
       "source_file": "tests/test_request.py",
@@ -6736,7 +6736,7 @@
       "label": "test_sglang_backend.py",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "test_sglang_backend.py",
       "source_file": "tests/test_sglang_backend.py",
@@ -6747,7 +6747,7 @@
       "label": "test_sglang_fakes.py",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "test_sglang_fakes.py",
       "source_file": "tests/test_sglang_fakes.py",
@@ -6758,7 +6758,7 @@
       "label": "test_sglang_scoring.py",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "test_sglang_scoring.py",
       "source_file": "tests/test_sglang_scoring.py",
@@ -6769,7 +6769,7 @@
       "label": "test_sglang_server.py",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "code",
       "norm_label": "test_sglang_server.py",
       "source_file": "tests/test_sglang_server.py",
@@ -6780,7 +6780,7 @@
       "label": "Native API doubles shared by SGLang tests, included in the source distribution.",
       "_origin": "ast",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "file_type": "rationale",
       "norm_label": "native api doubles shared by sglang tests, included in the source distribution.",
       "source_file": "tests/test_sglang_fakes.py",
@@ -7316,7 +7316,7 @@
       "label": "contextlib",
       "_origin": "semantic",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "external": true,
       "file_type": "concept",
       "norm_label": "contextlib",
@@ -7328,7 +7328,7 @@
       "label": "copy",
       "_origin": "semantic",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "external": true,
       "file_type": "concept",
       "norm_label": "copy",
@@ -7340,7 +7340,7 @@
       "label": "io",
       "_origin": "semantic",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "external": true,
       "file_type": "concept",
       "norm_label": "io",
@@ -7352,7 +7352,7 @@
       "label": "sys",
       "_origin": "semantic",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "external": true,
       "file_type": "concept",
       "norm_label": "sys",
@@ -7364,7 +7364,7 @@
       "label": "unittest",
       "_origin": "semantic",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "external": true,
       "file_type": "concept",
       "norm_label": "unittest",
@@ -7376,7 +7376,7 @@
       "label": "unittest_mock",
       "_origin": "semantic",
       "community": 4,
-      "community_name": "score_result",
+      "community_name": "unittest",
       "external": true,
       "file_type": "concept",
       "norm_label": "unittest_mock",
@@ -16519,13 +16519,24 @@
     },
     {
       "source": "docs_research_design_decisions",
+      "target": "docs_research_design_d007_benchmark_before_choosing_a_preferred_scorer_model",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/research-design.md",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_research_design_decisions",
       "target": "docs_research_design_d008_split_testing_by_execution_environment",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -16536,7 +16547,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L118",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -16580,7 +16591,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L76",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -16591,7 +16602,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L83",
+      "source_location": "L85",
       "weight": 1.0
     },
     {
@@ -16602,18 +16613,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L94",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_research_design_decisions",
-      "target": "docs_research_design_d007_benchmark_before_choosing_a_preferred_scorer_model",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/research-design.md",
-      "source_location": "L99",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -16624,7 +16624,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L162",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -16635,7 +16635,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L166",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -16646,7 +16646,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L170",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -16657,7 +16657,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L174",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -16668,7 +16668,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L178",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -16679,7 +16679,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L182",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -16690,7 +16690,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L186",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -16701,7 +16701,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L137",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -16712,7 +16712,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L158",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -16734,7 +16734,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L190",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -16745,7 +16745,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L202",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -16756,7 +16756,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/research-design.md",
-      "source_location": "L221",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -17064,7 +17064,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L112",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
@@ -17075,7 +17075,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L116",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -17086,7 +17086,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L130",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -17097,7 +17097,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L136",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -17119,7 +17119,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -17130,7 +17130,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L54",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -17141,7 +17141,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L62",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -17152,7 +17152,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L79",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -17163,7 +17163,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L83",
+      "source_location": "L85",
       "weight": 1.0
     },
     {
@@ -17174,7 +17174,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L95",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -21387,7 +21387,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -21398,7 +21398,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L56",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -21409,7 +21409,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L59",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -24341,6 +24341,30 @@
       "weight": 1.0
     },
     {
+      "source": "docs_research_design_d003_separate_scoring_strategy_from_inference_backend",
+      "target": "src_llm2jev_backend_base_binarybackend",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "BinaryBackend",
+      "source_file": "docs/research-design.md",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_research_design_d003_separate_scoring_strategy_from_inference_backend",
+      "target": "src_llm2jev_inference_scoring_binaryscorer",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "BinaryScorer",
+      "source_file": "docs/research-design.md",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
       "source": "docs_research_design_phase_1_scoring_abstraction",
       "target": "src_llm2jev_inference_scoring_binaryscorer",
       "relation": "references",
@@ -24349,7 +24373,19 @@
       "confidence_score": 0.95,
       "context": "BinaryScorer",
       "source_file": "docs/research-design.md",
-      "source_location": "L168",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_research_fork",
+      "target": "src_llm2jev_inference_scoring_binaryscorer",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "BinaryScorer",
+      "source_file": "README.md",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -24386,6 +24422,30 @@
       "context": "JevRequest",
       "source_file": "docs/usage.md",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_research_design_d003_separate_scoring_strategy_from_inference_backend",
+      "target": "src_llm2jev_inference_converter_llm2jev",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "LLM2Jev",
+      "source_file": "docs/research-design.md",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_research_fork",
+      "target": "src_llm2jev_inference_converter_llm2jev",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "LLM2Jev",
+      "source_file": "README.md",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -24473,6 +24533,18 @@
       "weight": 1.0
     },
     {
+      "source": "docs_research_design_d003_separate_scoring_strategy_from_inference_backend",
+      "target": "src_llm2jev_inference_scoring_scoringstrategy",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "ScoringStrategy",
+      "source_file": "docs/research-design.md",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
       "source": "docs_research_design_phase_1_scoring_abstraction",
       "target": "src_llm2jev_inference_scoring_scoringstrategy",
       "relation": "references",
@@ -24481,7 +24553,7 @@
       "confidence_score": 0.95,
       "context": "ScoringStrategy",
       "source_file": "docs/research-design.md",
-      "source_location": "L168",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -24493,7 +24565,7 @@
       "confidence_score": 0.95,
       "context": "ScoringStrategy",
       "source_file": "README.md",
-      "source_location": "L26",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -24945,5 +25017,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d45bcf633595cdacb4df49633bd5f2061c4fc130"
+  "built_at_commit": "2175d1cded64cb518369e3bc553a6df161317d69"
 }
