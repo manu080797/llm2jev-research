@@ -1,0 +1,60 @@
+name: Update Graphify knowledge graph
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "graphify-out/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: graphify-main
+  cancel-in-progress: true
+
+jobs:
+  update-graph:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v8.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Build or update Graphify graph
+        shell: bash
+        run: |
+          set -euo pipefail
+          GRAPHIFY="uvx --from graphifyy==0.9.66 graphify"
+
+          if [[ -f graphify-out/graph.json ]]; then
+            $GRAPHIFY update .
+          else
+            $GRAPHIFY extract . --code-only
+          fi
+
+      - name: Commit updated graph
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git add -A graphify-out/
+
+          if git diff --cached --quiet; then
+            echo "Graphify graph is already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(graphify): update knowledge graph"
+          git push origin HEAD:main

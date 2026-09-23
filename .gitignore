@@ -8,3 +8,11 @@ models/
 /dev-docs/
 evaluation
 runs
+
+# Graphify: commit the shared graph, keep machine-local/runtime state out.
+graphify-out/cost.json
+graphify-out/cache/
+graphify-out/memory/
+graphify-out/reflections/
+graphify-out/.graphify_*
+graphify-out/????-??-??/

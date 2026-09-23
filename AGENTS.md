@@ -26,6 +26,20 @@ This repository uses a Python `src` layout. Keep stable public imports in `src/l
 
 User-facing and research documentation is version-controlled under `docs/`. Do not rely on ignored/local design documents for architectural authority.
 
+## Graphify Knowledge Graph
+
+The repository keeps a shared Graphify code knowledge graph under `graphify-out/`. GitHub Actions refreshes it on pushes to `main` using pinned `graphifyy==0.9.66`, with AST/code-only extraction so CI requires no model API key.
+
+When `graphify-out/graph.json` exists:
+
+- use `graphify query "<question>"` for codebase orientation before broad source browsing;
+- use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts;
+- treat `graphify-out/GRAPH_REPORT.md` as broad architecture context, not as a substitute for source-of-truth code;
+- after local code changes, refresh with `uvx --from graphifyy==0.9.66 graphify update .` when an up-to-date graph is useful during the same working session;
+- do not assume documentation/PDF semantic nodes are refreshed by CI: the GitHub workflow intentionally maintains the code graph only.
+
+The workflow is `.github/workflows/update-graphify.yml`. If its Graphify version, output layout, maintenance commands, or CI behavior changes, update this section in the same change.
+
 ## Architecture Constraints
 
 Keep semantic scoring separate from model execution.
