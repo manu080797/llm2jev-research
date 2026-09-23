@@ -124,6 +124,14 @@ uv build
 
 Use additional external integration or benchmark scripts only when needed to answer the current research question.
 
+## Profiling Guidelines
+
+Use `docs/profiling.md` for performance experiments. CPU, GPU, and hybrid/offload profiling are all in scope.
+
+Do not optimize from wall-clock timing alone when memory behavior may dominate. For performance investigations, collect the relevant subset of CPU DRAM/cache/NUMA counters, GPU HBM/VRAM/cache/occupancy/transfer counters, and MoE expert-routing/reuse statistics. Keep collectors optional so the same workload can run on machines without every profiler installed.
+
+Prefer profiling the real Jev workload (shared prefix + multiple candidates + scorer) over generic generation benchmarks. Generic tokens/s is supporting data, not the primary project metric.
+
 ## Research and Benchmark Discipline
 
 Optimize first for fast, informative comparisons. Do not build a general benchmark framework before a concrete comparison needs it.

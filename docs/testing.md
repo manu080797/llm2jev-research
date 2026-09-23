@@ -128,3 +128,18 @@ The inherited model-free suite is sufficient to begin research. Add real-model s
 5. multimodal scoring with a real supported VLM, if multimodal behavior remains in scope.
 
 llama.cpp/GGUF and BitNet experiments should start with the simplest runnable commands. Promote them into stable/reproducible benchmark scripts only when their results are used for comparison or a durable design decision.
+
+
+## Performance profiling suite
+
+Performance profiling is external and hardware-dependent; it is not part of the model-free GitHub Actions lane.
+
+The profiling suite should grow with the llama.cpp experiment and follow `docs/profiling.md`. It should support the same fixed Jev workloads under:
+
+- CPU-only execution;
+- GPU-only execution;
+- hybrid/offload execution where the runtime supports it.
+
+Collectors are optional wrappers around the workload, not required dependencies. Initial support should prioritize basic timing/RSS plus Linux `perf stat`; add memory-controller bandwidth tools, Nsight/ROCm collectors, and MoE routing traces when those measurements are needed for a concrete comparison.
+
+For sparse MoE models, a performance result is incomplete if it reports only tokens/s. Capture expert routing/reuse/load balance where the runtime can expose it, plus CPU/GPU memory-bandwidth and cache behavior sufficient to determine whether the workload is compute-bound, bandwidth-bound, or dominated by transfers/synchronization.

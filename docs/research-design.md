@@ -136,6 +136,15 @@ Consequences:
 
 D009 supersedes the process-heavy interpretation of D008. D008 still defines the difference between model-free and real-model validation, but it does not require both layers for every implementation change.
 
+### D010 — Profile memory behavior across CPU, GPU, and MoE
+**Status:** accepted
+
+CPU is a first-class deployment target, but GPU and hybrid/offload execution are part of the research comparison. Performance conclusions must distinguish arithmetic cost from memory-system behavior.
+
+For dense and MoE experiments, profile the relevant memory hierarchy and execution characteristics: CPU DRAM bandwidth/cache locality/NUMA effects, GPU HBM/VRAM bandwidth/cache/occupancy/transfer overhead, and MoE expert routing/reuse/load balance. Candidate batching and shared-prefix reuse are experimental variables because they can change both KV reuse and expert-weight locality.
+
+The detailed methodology and optional toolchain live in `docs/profiling.md`. Profilers are research instruments, not mandatory dependencies for ordinary unit tests.
+
 ## Metrics
 
 When making a comparative claim or choosing a preferred approach, record the relevant subset of:
@@ -153,7 +162,10 @@ When making a comparative claim or choosing a preferred approach, record the rel
 - questions/s and candidates/s;
 - peak RAM;
 - model footprint;
-- CPU utilization and, where measurable, energy/question.
+- CPU utilization and, where measurable, energy/question;
+- effective CPU DRAM bandwidth and cache-miss/locality indicators when profiling performance;
+- GPU utilization, VRAM/HBM bandwidth, cache/occupancy, transfer overhead, and energy when GPU execution is compared;
+- MoE expert routing balance and expert reuse/batching indicators when sparse models are evaluated.
 
 Candidate benchmark sources include MMLU-Pro, ARC-Challenge, HellaSwag, PIQA, BoolQ, WinoGrande, TruthfulQA-MC, ANLI/MNLI and selected BBH tasks. Use development data for evaluator choices and preserve held-out evaluation data.
 
@@ -171,7 +183,7 @@ Introduce the thinnest useful `ScoringStrategy` boundary and place the current y
 
 ### Phase 2 — llama.cpp backend
 
-Get a conventional GGUF model scoring candidates through llama.cpp on CPU by the simplest maintainable route. Let that concrete implementation inform the eventual `ModelBackend` contract rather than designing the full abstraction up front. Add lightweight contract tests for fragile parsing/scoring logic; investigate KV reuse once basic scoring works.
+Get a conventional GGUF model scoring candidates through llama.cpp on CPU by the simplest maintainable route. Let that concrete implementation inform the eventual `ModelBackend` contract rather than designing the full abstraction up front. Add lightweight contract tests for fragile parsing/scoring logic; investigate KV reuse once basic scoring works. Establish the profiling harness here: CPU timing/RAM plus optional `perf`/memory-bandwidth counters, and GPU/hybrid collection where hardware is available.
 
 ### Phase 3 — Continuation scorer
 
@@ -183,7 +195,7 @@ Try BitNet through the emerging generic boundary as soon as llama.cpp/continuati
 
 ### Phase 5 — Comparative evaluation
 
-Once two or more approaches are worth comparing, add the minimum evaluation plumbing needed for a fair comparison. Reuse lm-evaluation-harness or small scripts before building a custom harness. Increase reproducibility, perturbation testing, uncertainty metrics, and machine-readable result capture only for experiments that influence durable design decisions.
+Once two or more approaches are worth comparing, add the minimum evaluation plumbing needed for a fair comparison. Reuse lm-evaluation-harness or small scripts before building a custom harness. Increase reproducibility, perturbation testing, uncertainty metrics, and machine-readable result capture only for experiments that influence durable design decisions. Compare CPU, GPU, and hybrid/offload execution where relevant, using the profiling methodology to explain bandwidth, cache, transfer, and MoE-routing effects rather than relying on tokens/s alone.
 
 ### Phase 6 — Experimental backends
 
