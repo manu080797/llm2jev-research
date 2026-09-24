@@ -1,0 +1,244 @@
+{
+  "name": "compact-jev",
+  "version": "1",
+  "description": "Small synthetic workload for early cross-model/scorer comparisons. Cases are deterministic and require no dataset download.",
+  "cases": [
+    {
+      "id": "noul-short-explicit-yes",
+      "tags": [
+        "noul",
+        "short-context",
+        "factual"
+      ],
+      "request": {
+        "model": "__MODEL__",
+        "state": "The invoice total is 120 USD and the due date is 30 September.",
+        "questions": {
+          "answer": {
+            "type": "noul",
+            "instructions": "Is the invoice total exactly 120 USD?"
+          }
+        }
+      },
+      "reference": {
+        "question_id": "answer",
+        "type": "noul",
+        "target": true
+      }
+    },
+    {
+      "id": "noul-short-explicit-no",
+      "tags": [
+        "noul",
+        "short-context",
+        "explicit-criteria",
+        "factual"
+      ],
+      "request": {
+        "model": "__MODEL__",
+        "state": "The package was delivered on Tuesday. The customer requested no refund.",
+        "questions": {
+          "answer": {
+            "type": "noul",
+            "instructions": "Did the customer request a refund?",
+            "criteria": {
+              "true": "The customer explicitly requested a refund.",
+              "false": "The customer did not request a refund."
+            }
+          }
+        }
+      },
+      "reference": {
+        "question_id": "answer",
+        "type": "noul",
+        "target": false
+      }
+    },
+    {
+      "id": "choice-short-routing-3",
+      "tags": [
+        "choice",
+        "short-context",
+        "3-options"
+      ],
+      "request": {
+        "model": "__MODEL__",
+        "state": "My card was charged twice for the same order.",
+        "questions": {
+          "answer": {
+            "type": "choice",
+            "instructions": "Which department should handle this request?",
+            "criteria": {
+              "shipping": "Delivery, tracking, or damaged-package problems.",
+              "billing": "Charges, invoices, payments, or duplicate transactions.",
+              "returns": "Product returns, exchanges, or return labels."
+            }
+          }
+        }
+      },
+      "reference": {
+        "question_id": "answer",
+        "type": "choice",
+        "target": "billing"
+      }
+    },
+    {
+      "id": "score-short-severity-5",
+      "tags": [
+        "score",
+        "short-context",
+        "5-levels",
+        "ordinal"
+      ],
+      "request": {
+        "model": "__MODEL__",
+        "state": "The service was unavailable for four hours during business hours. Work stopped, but no data was lost.",
+        "questions": {
+          "answer": {
+            "type": "score",
+            "instructions": "Rate operational severity using the ordered levels.",
+            "criteria": [
+              "Negligible: no meaningful operational impact.",
+              "Minor: inconvenience with an easy workaround.",
+              "Moderate: material disruption but core work can continue.",
+              "High: core work stops for a significant period, without catastrophic loss.",
+              "Critical: prolonged outage, safety impact, or major irreversible loss."
+            ]
+          }
+        }
+      },
+      "reference": {
+        "question_id": "answer",
+        "type": "score",
+        "target": 3
+      }
+    },
+    {
+      "id": "choice-unequal-candidate-text",
+      "tags": [
+        "choice",
+        "short-context",
+        "4-options",
+        "unequal-candidate-length"
+      ],
+      "request": {
+        "model": "__MODEL__",
+        "state": "The planet described has prominent rings, is the sixth planet from the Sun, and is a gas giant.",
+        "questions": {
+          "answer": {
+            "type": "choice",
+            "instructions": "Select the planet that matches the description.",
+            "criteria": {
+              "mercury": "Mercury.",
+              "earth": "Earth, the rocky planet with liquid surface oceans and one natural satellite.",
+              "jupiter": "Jupiter, the largest planet in the Solar System.",
+              "saturn": "Saturn, a gas giant known for its extensive visible ring system."
+            }
+          }
+        }
+      },
+      "reference": {
+        "question_id": "answer",
+        "type": "choice",
+        "target": "saturn"
+      }
+    },
+    {
+      "id": "choice-moderate-12-options",
+      "tags": [
+        "choice",
+        "short-context",
+        "12-options",
+        "moderate-option-count"
+      ],
+      "request": {
+        "model": "__MODEL__",
+        "state": "The event takes place in the month immediately after August and before October.",
+        "questions": {
+          "answer": {
+            "type": "choice",
+            "instructions": "Select the month described by the state.",
+            "criteria": {
+              "january": "January",
+              "february": "February",
+              "march": "March",
+              "april": "April",
+              "may": "May",
+              "june": "June",
+              "july": "July",
+              "august": "August",
+              "september": "September",
+              "october": "October",
+              "november": "November",
+              "december": "December"
+            }
+          }
+        }
+      },
+      "reference": {
+        "question_id": "answer",
+        "type": "choice",
+        "target": "september"
+      }
+    },
+    {
+      "id": "choice-long-context-retrieval",
+      "tags": [
+        "choice",
+        "long-context",
+        "5-options",
+        "retrieval"
+      ],
+      "request": {
+        "model": "__MODEL__",
+        "state": [
+          "Project Northstar weekly log. Monday: the procurement review was postponed; no purchase order was issued. Tuesday: the thermal test completed normally and the instrumentation team archived the raw traces. Wednesday: the software group updated the dashboard but did not change the solver. Thursday: the mechanical team inspected the pressure vessel and found no visible deformation. Friday morning: the operations group reviewed all open actions. The only action assigned a named owner was to replace pressure transducer PT-17 before the next hydraulic test. That action was assigned to Elena Rossi. Friday afternoon: the project manager confirmed that budget approval remains pending and that no other action owner was changed."
+        ],
+        "questions": {
+          "answer": {
+            "type": "choice",
+            "instructions": "Who owns the action to replace pressure transducer PT-17?",
+            "criteria": {
+              "marco": "Marco Diaz",
+              "priya": "Priya Shah",
+              "elena": "Elena Rossi",
+              "lucas": "Lucas Meyer",
+              "none": "No named owner was assigned"
+            }
+          }
+        }
+      },
+      "reference": {
+        "question_id": "answer",
+        "type": "choice",
+        "target": "elena"
+      }
+    },
+    {
+      "id": "noul-long-context-negation",
+      "tags": [
+        "noul",
+        "long-context",
+        "negation",
+        "retrieval"
+      ],
+      "request": {
+        "model": "__MODEL__",
+        "state": [
+          "Incident summary. The monitoring system raised a high-temperature alarm at 14:03. Operators reduced load at 14:05 and temperature returned below the alarm threshold at 14:11. Inspection found a loose temperature-sensor connector. No fire occurred, no pressure boundary was breached, and no personnel were injured. The unit remained shut down for inspection until 16:20. The connector was reseated and the sensor passed a functional check before restart."
+        ],
+        "questions": {
+          "answer": {
+            "type": "noul",
+            "instructions": "Did the incident include a pressure-boundary breach?"
+          }
+        }
+      },
+      "reference": {
+        "question_id": "answer",
+        "type": "noul",
+        "target": false
+      }
+    }
+  ]
+}
