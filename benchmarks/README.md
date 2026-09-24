@@ -43,3 +43,38 @@ Add profiler-specific artifacts separately rather than expanding the core result
 The repository test `tests/test_compact_benchmark.py` validates every request through the same Jev wire parser used by the HTTP path and checks that references match the question type/options.
 
 The workload is a research smoke benchmark, not a substitute for held-out public evaluation datasets.
+
+
+## Running the Transformers binary baseline
+
+`run_baseline.py` executes the compact workload through the existing zero-training binary yes/no scorer and writes a result compatible with `result.schema.json`.
+
+The model must already exist locally because `TransformersBackend` uses `local_files_only=True`.
+
+For the intended first LFM2.5-2.6B run:
+
+```bash
+uv sync --extra transformers
+
+uv run python benchmarks/run_baseline.py \
+  --model-path /path/to/LFM2.5-2.6B \
+  --device cpu \
+  --dtype bfloat16 \
+  --output results/lfm2.5-2.6b-transformers-cpu.json
+```
+
+For CUDA:
+
+```bash
+uv run python benchmarks/run_baseline.py \
+  --model-path /path/to/LFM2.5-2.6B \
+  --device cuda \
+  --dtype bfloat16 \
+  --output results/lfm2.5-2.6b-transformers-gpu.json
+```
+
+The runner records model-load time separately from benchmark elapsed time. It reports per-case latency, exact/rounded hits, Score absolute error, process peak RSS, and CUDA peak allocated VRAM when applicable.
+
+The binary scorer requires the configured `yes` and `no` labels to each tokenize to exactly one token. If a model's tokenizer does not satisfy that assumption, the backend fails explicitly. Use `--yes-label` / `--no-label` only when the alternative labels preserve the intended binary semantics.
+
+The initial runner deliberately does not collect `perf`, Nsight, energy, or memory-controller counters. Phase 3 profiling wraps the same fixed workload with those collectors.

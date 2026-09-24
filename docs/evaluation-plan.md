@@ -58,7 +58,7 @@ This isolates hardware/runtime/model-architecture effects from scoring-method ef
 
 ## Early benchmark set
 
-The initial scaffold is versioned as `benchmarks/compact_jev_v1.json`, with its minimal experiment result envelope in `benchmarks/result.schema.json`.
+The initial scaffold is versioned as `benchmarks/compact_jev_v1.json`, with its minimal experiment result envelope in `benchmarks/result.schema.json`. `benchmarks/run_baseline.py` runs the existing Transformers binary scorer against this fixture and is the first external real-model measurement path.
 
 Do not begin with the full benchmark catalog. Start with a compact research set that exercises the Jev primitives and exposes obvious weaknesses quickly.
 
