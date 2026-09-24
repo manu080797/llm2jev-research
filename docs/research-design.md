@@ -48,6 +48,8 @@ These repositories are design references, not automatically runtime dependencies
 - **[ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)** — target generic GGUF/CPU inference runtime and reference for tokenization, logits, KV-cache/session behavior, batching, and local server/library APIs. Do not fork or modify optimized internals unless profiling demonstrates that the public/runtime interfaces cannot meet requirements.
 - **[microsoft/BitNet](https://github.com/microsoft/BitNet)** — official bitnet.cpp reference for 1-bit/ternary model inference and optimized CPU kernels. BitNet support must enter through the generic backend boundary rather than creating BitNet-specific semantic logic.
 - **[razorback16/openjev](https://github.com/razorback16/openjev)** — reference for masked/discrete-diffusion decision readout, where several answer slots can be scored in parallel. Use it to inform a distinct masked-backend primitive rather than forcing diffusion models into the autoregressive continuation interface.
+- **[NandhaKishorM/laya](https://github.com/NandhaKishorM/laya)** — trained non-autoregressive typed-decision specialist. Use as a control for the cost/benefit of specialization versus this project's zero-training constraint, not as an architectural specification.
+- **[lkarlslund/laya.cpp](https://github.com/lkarlslund/laya.cpp)** — native ggml implementation of Laya with Jev-compatible serving and CPU/GPU-oriented runtime work. Use as a runtime/performance control for specialist inference where compatible hardware is available.
 
 When a new external project materially influences an interface, scoring method, benchmark methodology, or optimization, add it here with the exact concept being adopted or compared.
 
@@ -145,6 +147,21 @@ For dense and MoE experiments, profile the relevant memory hierarchy and executi
 
 The detailed methodology and optional toolchain live in `docs/profiling.md`. Profilers are research instruments, not mandatory dependencies for ordinary unit tests.
 
+### D011 — Use trained specialists as controls, not project targets
+**Status:** accepted
+
+The project remains zero-training and model-agnostic. Purpose-trained typed-decision models such as Laya are valuable controls because they show what specialization can buy in latency, memory, and probability quality.
+
+Comparisons must separate training exposure from architecture/runtime effects. In particular, a checkpoint fine-tuned on a benchmark must be labeled as an in-domain specialist control rather than compared as if it were zero-shot.
+
+The comparative design is factorized into three questions:
+
+1. specialist training versus zero-training general models;
+2. scoring strategy while holding model/runtime fixed;
+3. model/runtime architecture while holding scoring/workload fixed.
+
+The concrete experimental matrix and fairness rules live in `docs/evaluation-plan.md`.
+
 ## Metrics
 
 When making a comparative claim or choosing a preferred approach, record the relevant subset of:
@@ -167,7 +184,7 @@ When making a comparative claim or choosing a preferred approach, record the rel
 - GPU utilization, VRAM/HBM bandwidth, cache/occupancy, transfer overhead, and energy when GPU execution is compared;
 - MoE expert routing balance and expert reuse/batching indicators when sparse models are evaluated.
 
-Candidate benchmark sources include MMLU-Pro, ARC-Challenge, HellaSwag, PIQA, BoolQ, WinoGrande, TruthfulQA-MC, ANLI/MNLI and selected BBH tasks. Use development data for evaluator choices and preserve held-out evaluation data.
+Begin with the compact discriminative workload in `docs/evaluation-plan.md`, then expand to MMLU-Pro, ARC-Challenge, HellaSwag, PIQA, BoolQ, WinoGrande, TruthfulQA-MC, ANLI/MNLI and selected BBH tasks when additional breadth is useful. Use development data for evaluator choices and preserve held-out evaluation data.
 
 ## Implementation phases
 
@@ -181,25 +198,45 @@ Establish a lightweight baseline: inventory the inherited tests, run the model-f
 
 Introduce the thinnest useful `ScoringStrategy` boundary and place the current yes/no path behind `BinaryScorer`. Preserve behavior where convenient, but do not over-design the interface before continuation and llama.cpp experiments exercise it. Add only targeted tests needed to protect scorer math and the existing baseline.
 
-### Phase 2 — llama.cpp backend
+### Phase 2 — Early comparative scaffold
 
-Get a conventional GGUF model scoring candidates through llama.cpp on CPU by the simplest maintainable route. Let that concrete implementation inform the eventual `ModelBackend` contract rather than designing the full abstraction up front. Add lightweight contract tests for fragile parsing/scoring logic; investigate KV reuse once basic scoring works. Establish the profiling harness here: CPU timing/RAM plus optional `perf`/memory-bandwidth counters, and GPU/hybrid collection where hardware is available.
+Before more backend engineering, establish the smallest useful comparison loop.
 
-### Phase 3 — Continuation scorer
+Create a compact Jev workload that exercises noul, choice, score, short/long context, and different option counts. Run at least one existing zero-training generative baseline through the current code and one Laya specialist control when an external model environment is available. Emit a small machine-readable result record.
 
-Implement full conditional continuation log-likelihood early enough to compare it with the binary baseline. Start with a correct simple version; add batching/KV branching, length normalization variants, and null-context correction only as experiments require them. Use small deterministic tests for the scoring equation and unequal-length candidates.
+This phase exists to create feedback. It should not become a general benchmark framework.
 
-### Phase 4 — BitNet
+### Phase 3 — llama.cpp/GGUF and profiling
 
-Try BitNet through the emerging generic boundary as soon as llama.cpp/continuation experiments make that boundary concrete. Prioritize getting real CPU measurements over building exhaustive mocks. Keep BitNet-specific details below the semantic scoring layer and compare only the metrics needed to decide whether the runtime is promising.
+Get a conventional GGUF model scoring candidates through llama.cpp by the simplest maintainable route. Start CPU-first, then exercise GPU and hybrid/offload where available. Let the concrete implementation inform the eventual `ModelBackend` contract.
 
-### Phase 5 — Comparative evaluation
+Add the first profiling runner here: timing/RAM plus optional CPU `perf`/memory-bandwidth counters and GPU telemetry. Investigate candidate batching, shared-prefix/KV reuse, and cache behavior once basic scoring works.
 
-Once two or more approaches are worth comparing, add the minimum evaluation plumbing needed for a fair comparison. Reuse lm-evaluation-harness or small scripts before building a custom harness. Increase reproducibility, perturbation testing, uncertainty metrics, and machine-readable result capture only for experiments that influence durable design decisions. Compare CPU, GPU, and hybrid/offload execution where relevant, using the profiling methodology to explain bandwidth, cache, transfer, and MoE-routing effects rather than relying on tokens/s alone.
+### Phase 4 — Zero-training scorer comparison
 
-### Phase 6 — Experimental backends
+Implement a simple correct continuation scorer and a minimal label-token experiment early enough to compare them against the binary baseline on the compact workload.
 
-Spike label-token and masked/diffusion approaches with minimal plumbing. Promote an experiment into the common architecture only if results justify continued work; otherwise keep the prototype disposable.
+Hold model/runtime fixed while comparing scorers. Start with correct simple implementations; add batching, KV branching, length normalization variants, null-context correction, or option-permutation debiasing only when the simple experiment shows a reason.
+
+### Phase 5 — Efficient model families
+
+Use the best-understood scorer(s) to compare local model families:
+
+- small dense GGUF models;
+- sparse MoE models, tracking both total and active parameters/token;
+- BitNet/ternary models where a stable runtime/model is available.
+
+Compare CPU, GPU, and hybrid/offload execution as appropriate. For MoE, measure expert routing/reuse and memory behavior rather than assuming active parameter count predicts speed.
+
+### Phase 6 — Broader comparative evaluation
+
+Only after early experiments identify promising approaches, expand the task suite and result capture. Reuse lm-evaluation-harness or small adapters where useful.
+
+Produce Pareto comparisons of decision quality against latency, throughput, RAM/VRAM, bandwidth pressure, and energy where available. Add calibration, perturbation, and selective-prediction analysis when they affect a real decision.
+
+### Phase 7 — Additional experimental backends
+
+Spike masked/diffusion readout or other novel approaches only if a CPU/GPU-feasible model/runtime exists and the experiment can answer a distinct research question. Keep unsuccessful experiments disposable.
 
 ## Change protocol
 

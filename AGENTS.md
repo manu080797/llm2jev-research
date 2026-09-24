@@ -42,7 +42,7 @@ The workflow is `.github/workflows/update-graphify.yml`. If its Graphify version
 
 ## Reference Implementations
 
-For architecture/scoring/backend work, consult the role-specific references listed in `docs/research-design.md` before inventing a new mechanism. In particular: upstream LLM2Jev for the current binary/API behavior; AnyJev for label-token debiasing; daseinlabs/open-jev for continuation likelihood and prefix-shared option scoring; lm-evaluation-harness for evaluation abstractions; llama.cpp for GGUF/CPU runtime behavior; Microsoft BitNet for ternary inference; and razorback16/openjev for masked/diffusion readout.
+For architecture/scoring/backend work, consult the role-specific references listed in `docs/research-design.md` before inventing a new mechanism. In particular: upstream LLM2Jev for the current binary/API behavior; Laya/Laya.cpp as trained specialist and native-runtime controls; AnyJev for label-token debiasing; daseinlabs/open-jev for continuation likelihood and prefix-shared option scoring; lm-evaluation-harness for evaluation abstractions; llama.cpp for GGUF/CPU runtime behavior; Microsoft BitNet for ternary inference; and razorback16/openjev for masked/diffusion readout.
 
 Treat these as references, not specifications. Preserve this repository's accepted decisions and generic interfaces unless evidence justifies a documented design change.
 
@@ -152,14 +152,15 @@ Include reproducible benchmark artifacts when a performance/quality result is be
 
 ## Current Research Sequence
 
-Issue #1 owns task completion status. The non-status phase sequence is:
+Issue #1 owns task completion status. The non-status sequence is:
 
-1. establish and record the upstream baseline;
-2. extract the existing binary scorer behind a scoring-strategy abstraction without changing behavior;
-3. add a generic llama.cpp/GGUF backend and verify CPU execution/prefix reuse;
-4. implement full candidate continuation likelihood and its explicit normalization/correction options;
-5. integrate and benchmark BitNet through the generic backend boundary;
-6. build reproducible comparative evaluation;
-7. evaluate label-token and masked/diffusion approaches as additional experiments.
+1. establish the model-free repository baseline;
+2. keep the thin scoring abstraction;
+3. establish an early comparative loop with a compact Jev workload and a trained Laya control;
+4. add llama.cpp/GGUF plus CPU/GPU/hybrid profiling;
+5. compare binary, label-token, and continuation scoring while holding model/runtime fixed;
+6. compare dense, sparse-MoE, and BitNet/ternary model families while holding scoring/workload fixed;
+7. broaden evaluation only after promising regimes emerge;
+8. spike masked/diffusion or other experimental readouts if they answer a distinct question.
 
-The phase order is advisory. Spike later ideas early when doing so can invalidate an assumption or avoid unnecessary abstraction work.
+Use `docs/evaluation-plan.md` to keep training exposure, scorer effects, and runtime/model effects separated. The phase order remains advisory; run an early experiment whenever it can invalidate an assumption cheaply.
